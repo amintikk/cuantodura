@@ -27,8 +27,8 @@ function show() {
   });
   document.getElementById('map-cap')!.textContent = m.cap;
   const rows = Object.entries(P).sort((a, b) => (m.get(b[1]) ?? -1) - (m.get(a[1]) ?? -1));
-  document.getElementById('map-table')!.innerHTML = `<thead><tr><th>${t('Provincia')}</th><th>${esc(m.label)}</th><th>${t('Turismos')}</th><th>${t('Edad media')}</th></tr></thead><tbody>${rows
-    .map(([, p], i) => `<tr><td><span class="muted tnum" style="display:inline-block;width:26px">${i + 1}</span>${esc(p.name)}</td><td><b>${m.get(p) == null ? '—' : m.fmt(m.get(p)!)}</b></td><td>${int(p.stock)}</td><td>${num(p.mean_age, 1)}</td></tr>`)
+  document.getElementById('map-table')!.innerHTML = `<thead><tr><th>${t('Provincia')}</th><th>${esc(m.label)}</th><th>${t('Turismos')}</th>${key === 'mean_age' ? '' : `<th>${t('Edad media')}</th>`}</tr></thead><tbody>${rows
+    .map(([, p], i) => `<tr><td><span class="muted tnum" style="display:inline-block;width:26px">${i + 1}</span>${esc(p.name)}</td><td><b>${m.get(p) == null ? '—' : m.fmt(m.get(p)!)}</b></td><td>${int(p.stock)}</td>${key === 'mean_age' ? '' : `<td>${num(p.mean_age, 1)}</td>`}</tr>`)
     .join('')}</tbody>`;
   document.querySelectorAll('#map-metric button').forEach((b) => b.setAttribute('aria-pressed', String((b as HTMLElement).dataset.k === key)));
   history.replaceState(null, '', key === 'mean_age' ? location.pathname : `?k=${key}`);

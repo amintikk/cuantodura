@@ -1355,3 +1355,13 @@ a.card:hover {
 .hero-grid > * {
   min-width: 0;
 }
+:root[data-theme='dark'] .brand-mark {
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px #3a3f4b;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme='light'])) .brand-mark {
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px #3a3f4b;
+  }
+}
