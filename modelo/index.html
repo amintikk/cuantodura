@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{m-title}}</title>
+    <meta name="description" content="{{m-desc}}" />
+    <link rel="canonical" href="https://cuantodura.aminox.dev/modelo/{{m-slug}}/" />
+    <link rel="alternate" hreflang="es" href="https://cuantodura.aminox.dev/modelo/{{m-slug}}/" />
+    <link rel="alternate" hreflang="en" href="https://cuantodura.aminox.dev/en/model/{{m-slug}}/" />
+    <link rel="alternate" hreflang="x-default" href="https://cuantodura.aminox.dev/modelo/{{m-slug}}/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{m-og-title}}" />
+    <meta property="og:description" content="{{m-desc}}" />
+    <meta property="og:url" content="https://cuantodura.aminox.dev/modelo/{{m-slug}}/" />
+    <meta property="og:image" content="https://cuantodura.aminox.dev/og/{{m-slug}}.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_ES" />
+    <!--#head-->
+    {{m-jsonld}}
+  </head>
+  <body class="model" data-slug="{{m-slug}}">
+    <!--#header-->
+    <main id="main">
+      <section class="model-hero">
+        <div class="wrap">
+          <nav class="crumbs" aria-label="Migas de pan"><a href="/">Inicio</a><span aria-hidden="true">›</span><a href="/rankings/">Rankings</a><span aria-hidden="true">›</span><span id="m-crumb">{{m-segment}}</span></nav>
+          <h1 id="m-name">{{m-name}}</h1>
+          <p class="verdict" id="m-verdict">{{m-verdict}}</p>
+          <div class="stats" id="m-stats">{{m-stats}}</div>
+          <div class="share-row">
+            <button class="btn small" type="button" data-share><i data-icon="share" data-size="16"></i><span>Compartir</span></button>
+            <a class="btn small" id="m-compare" href="/comparar/?m={{m-slug}}"><i data-icon="compare" data-size="16"></i><span>Comparar con otro modelo</span></a>
+            <a class="btn small" id="m-yourcar" href="/tu-coche/?m={{m-slug}}"><i data-icon="arrowRight" data-size="16"></i><span>Calcular para mi coche</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="curva">
+        <div class="wrap">
+          <figure class="figure">
+            <div class="figure-head">
+              <div>
+                <h2 class="figure-title serif" style="font-size: 1.6rem">Cuántos siguen dados de alta a cada edad</h2>
+                <p class="figure-sub" id="curve-sub">Frente a la media de todos los turismos y a sus rivales de segmento.</p>
+              </div>
+              <div class="seg" role="group" aria-label="Con qué comparar" id="curve-mode">
+                <button type="button" data-mode="avg" aria-pressed="true">Media</button>
+                <button type="button" data-mode="rivals" aria-pressed="false">Rivales</button>
+              </div>
+            </div>
+            <ul class="legend" id="curve-legend"></ul>
+            <div id="m-chart" style="min-height: 420px"></div>
+            <figcaption id="curve-cap"></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section tint" id="indice">
+        <div class="wrap grid-2">
+          <div>
+            <p class="kicker">Índice de bajas</p>
+            <h2 id="idx-title">Frente a los coches de su edad</h2>
+            <p class="lead" id="idx-text"></p>
+          </div>
+          <div id="idx-box"></div>
+        </div>
+      </section>
+
+      <section class="section" id="motores">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Combustible y motor</p>
+            <h2>Diésel, gasolina y cada motor</h2>
+            <p class="lead" id="fuel-text"></p>
+          </div>
+          <div id="fuel-block"></div>
+          <div class="grid-2" style="margin-top: 40px">
+            <div id="engine-block"></div>
+            <div id="power-block"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tint" id="generaciones">
+        <div class="wrap grid-2">
+          <div>
+            <p class="kicker">Generaciones</p>
+            <h2>Según el año de matriculación</h2>
+            <p class="lead">Índice de bajas de cada tanda de años de matriculación, comparada con la media de coches de su misma edad. Por debajo de 100, aguanta mejor que la media.</p>
+          </div>
+          <div id="gen-block"></div>
+        </div>
+      </section>
+
+      <section class="section" id="bajas">
+        <div class="wrap grid-2">
+          <div>
+            <p class="kicker">Por qué se dan de baja</p>
+            <h2>Motivos y exportaciones</h2>
+            <div id="motivo-block"></div>
+          </div>
+          <div>
+            <p class="kicker">Exportaciones</p>
+            <h2 id="exp-title">¿Se van fuera?</h2>
+            <div id="export-block"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tint" id="hoy">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Hoy en circulación</p>
+            <h2 id="now-title">Cuántos quedan y dónde</h2>
+            <p class="lead" id="now-text"></p>
+          </div>
+          <div class="grid-2">
+            <figure class="figure">
+              <p class="figure-title">Por provincia, por cada 1.000 turismos</p>
+              <div id="prov-map"></div>
+            </figure>
+            <figure class="figure">
+              <p class="figure-title">Por año de primera matriculación</p>
+              <div id="years-chart"></div>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="notas">
+        <div class="wrap narrow">
+          <h2 style="font-size: 1.5rem; margin-bottom: 14px">Cómo leer estos datos</h2>
+          <div id="m-notes"></div>
+        </div>
+      </section>
+    </main>
+    <!--#footer-->
+    <script type="module" src="/src/pages/model.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{m-title}}</title>
+    <meta name="description" content="{{m-desc}}" />
+    <link rel="canonical" href="https://cuantodura.aminox.dev/en/model/{{m-slug}}/" />
+    <link rel="alternate" hreflang="es" href="https://cuantodura.aminox.dev/modelo/{{m-slug}}/" />
+    <link rel="alternate" hreflang="en" href="https://cuantodura.aminox.dev/en/model/{{m-slug}}/" />
+    <link rel="alternate" hreflang="x-default" href="https://cuantodura.aminox.dev/modelo/{{m-slug}}/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{m-og-title}}" />
+    <meta property="og:description" content="{{m-desc}}" />
+    <meta property="og:url" content="https://cuantodura.aminox.dev/en/model/{{m-slug}}/" />
+    <meta property="og:image" content="https://cuantodura.aminox.dev/og/en/{{m-slug}}.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_GB" />
+    <!--#head-->
+    {{m-jsonld}}
+  </head>
+  <body class="model" data-slug="{{m-slug}}">
+    <!--#header-->
+    <main id="main">
+      <section class="model-hero">
+        <div class="wrap">
+          <nav class="crumbs" aria-label="Breadcrumb"><a href="/en/">Home</a><span aria-hidden="true">›</span><a href="/en/rankings/">Rankings</a><span aria-hidden="true">›</span><span id="m-crumb">{{m-segment}}</span></nav>
+          <h1 id="m-name">{{m-name}}</h1>
+          <p class="verdict" id="m-verdict">{{m-verdict}}</p>
+          <div class="stats" id="m-stats">{{m-stats}}</div>
+          <div class="share-row">
+            <button class="btn small" type="button" data-share><i data-icon="share" data-size="16"></i><span>Share</span></button>
+            <a class="btn small" id="m-compare" href="/en/compare/?m={{m-slug}}"><i data-icon="compare" data-size="16"></i><span>Compare with another model</span></a>
+            <a class="btn small" id="m-yourcar" href="/en/your-car/?m={{m-slug}}"><i data-icon="arrowRight" data-size="16"></i><span>Calculate for my car</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="curva">
+        <div class="wrap">
+          <figure class="figure">
+            <div class="figure-head">
+              <div>
+                <h2 class="figure-title serif" style="font-size: 1.6rem">How many are still registered at each age</h2>
+                <p class="figure-sub" id="curve-sub">Compared with the average for all passenger cars and with its segment rivals.</p>
+              </div>
+              <div class="seg" role="group" aria-label="What to compare with" id="curve-mode">
+                <button type="button" data-mode="avg" aria-pressed="true">Average</button>
+                <button type="button" data-mode="rivals" aria-pressed="false">Rivals</button>
+              </div>
+            </div>
+            <ul class="legend" id="curve-legend"></ul>
+            <div id="m-chart" style="min-height: 420px"></div>
+            <figcaption id="curve-cap"></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section tint" id="indice">
+        <div class="wrap grid-2">
+          <div>
+            <p class="kicker">De-registration index</p>
+            <h2 id="idx-title">Compared with cars of the same age</h2>
+            <p class="lead" id="idx-text"></p>
+          </div>
+          <div id="idx-box"></div>
+        </div>
+      </section>
+
+      <section class="section" id="motores">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Fuel and engine</p>
+            <h2>Diesel, petrol and each engine</h2>
+            <p class="lead" id="fuel-text"></p>
+          </div>
+          <div id="fuel-block"></div>
+          <div class="grid-2" style="margin-top: 40px">
+            <div id="engine-block"></div>
+            <div id="power-block"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tint" id="generaciones">
+        <div class="wrap grid-2">
+          <div>
+            <p class="kicker">Generations</p>
+            <h2>By year of first registration</h2>
+            <p class="lead">De-registration index for each group of registration years, compared with the average for cars of the same age. Below 100, it lasts better than the average.</p>
+          </div>
+          <div id="gen-block"></div>
+        </div>
+      </section>
+
+      <section class="section" id="bajas">
+        <div class="wrap grid-2">
+          <div>
+            <p class="kicker">Why they are de-registered</p>
+            <h2>Reasons and exports</h2>
+            <div id="motivo-block"></div>
+          </div>
+          <div>
+            <p class="kicker">Exports</p>
+            <h2 id="exp-title">Are they leaving the country?</h2>
+            <div id="export-block"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tint" id="hoy">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Currently on the road</p>
+            <h2 id="now-title">How many remain, and where</h2>
+            <p class="lead" id="now-text"></p>
+          </div>
+          <div class="grid-2">
+            <figure class="figure">
+              <p class="figure-title">By province, per 1,000 passenger cars</p>
+              <div id="prov-map"></div>
+            </figure>
+            <figure class="figure">
+              <p class="figure-title">By year of first registration</p>
+              <div id="years-chart"></div>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="notas">
+        <div class="wrap narrow">
+          <h2 style="font-size: 1.5rem; margin-bottom: 14px">How to read this data</h2>
+          <div id="m-notes"></div>
+        </div>
+      </section>
+    </main>
+    <!--#footer-->
+    <script type="module" src="/src/pages/model.ts"></script>
+  </body>
+</html>

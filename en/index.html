@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cuánto dura · How long does a car really last in Spain?</title>
+    <meta name="description" content="Survival tables for every car model in Spain, based on official DGT data: median life, the share still registered at 15 and 20 years, rankings, comparison tool and map." />
+    <link rel="canonical" href="https://cuantodura.aminox.dev/en/" />
+    <link rel="alternate" hreflang="es" href="https://cuantodura.aminox.dev/" />
+    <link rel="alternate" hreflang="en" href="https://cuantodura.aminox.dev/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://cuantodura.aminox.dev/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How long does a car really last in Spain?" />
+    <meta property="og:description" content="Half of all passenger cars are de-registered before the age of {{nat-median}}. Find yours: survival tables by model, based on DGT data." />
+    <meta property="og:url" content="https://cuantodura.aminox.dev/en/" />
+    <meta property="og:image" content="https://cuantodura.aminox.dev/og/home-en.png" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <!--#head-->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "Cuánto dura",
+            "url": "https://cuantodura.aminox.dev/en/",
+            "inLanguage": "en",
+            "potentialAction": { "@type": "SearchAction", "target": "https://cuantodura.aminox.dev/en/compare/?q={search_term_string}", "query-input": "required name=search_term_string" }
+          },
+          {
+            "@type": "Dataset",
+            "name": "Survival tables for passenger cars in Spain by model",
+            "description": "Median life and percentage of cars still registered at each age, by brand, model, fuel type and province, calculated from the de-registrations and the monthly fleet published by the DGT.",
+            "url": "https://cuantodura.aminox.dev/en/sources/",
+            "license": "https://opensource.org/licenses/MIT",
+            "creator": { "@type": "Person", "name": "Amin Tahtah Toumi" },
+            "isBasedOn": "https://www.dgt.es/menusecundario/dgt-en-cifras/",
+            "temporalCoverage": "{{window-iso}}",
+            "spatialCoverage": "Spain",
+            "dateModified": "{{generated-date}}"
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body class="home">
+    <!--#header-->
+    <main id="main">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <p class="kicker">Official DGT data · updated {{data-updated}}</p>
+          <h1>How long does a car <em>really</em> last in Spain?</h1>
+          <p class="lead">
+            Using de-registrations from the last twelve months and the full register of {{stock-millions}} million passenger cars, this is the life table for each model: how many are still registered at 15, 20 or 25 years, and the age by which half have already been de-registered.
+          </p>
+          <div class="hero-search" id="hero-search"></div>
+          <figure class="figure hero-figure">
+            <div id="hero-chart" style="min-height: 420px" aria-describedby="hero-cap"></div>
+            <div class="stats" id="hero-stats">
+              <div class="stat"><b class="tnum">{{nat-median}}<small>years</small></b><span>median life of a passenger car in Spain</span></div>
+              <div class="stat"><b class="tnum">{{nat-s20}}</b><span>still registered at 20 years</span></div>
+              <div class="stat"><b class="tnum">{{death-median}}<small>years</small></b><span>median age of the cars de-registered this year</span></div>
+              <div class="stat"><b class="tnum">{{stock-median-age}}<small>years</small></b><span>median age of the current fleet ({{stock-millions}} million)</span></div>
+            </div>
+            <figcaption id="hero-cap">
+              Percentage of passenger cars still registered with the DGT at each age, based on the {{nat-deaths}} de-registrations from {{window-text}}. This is a period life table: it describes
+              how today's fleet is ageing, not the history of one particular generation. <a href="/en/methodology/">How it is calculated</a>.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="carrera">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="kicker">The race</p>
+            <h2>Which lasts longest: the longest-lived models and those that last least</h2>
+            <p class="lead">They all start at 100 %. Press play and watch them drop out along the way as they get older.</p>
+          </div>
+          <div id="race" class="reveal"></div>
+        </div>
+      </section>
+
+      <section class="section tint" id="combustible">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="kicker">Fuel type</p>
+            <h2>Do diesels last longer?</h2>
+            <p class="lead" id="fuel-lead">We compare the curve for each fuel type. Hybrids and electric cars are still young: their longer stretch is estimated using the average and shown dotted.</p>
+          </div>
+          <figure class="figure reveal">
+            <div id="fuel-chart" style="min-height: 380px"></div>
+            <figcaption>The grey line is the average for all passenger cars. Hover over the chart or use the arrow keys to see each age.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="historia">
+        <div class="wrap grid-2">
+          <div class="reveal">
+            <p class="kicker">Trend</p>
+            <h2>Cars are being retired at ever older ages</h2>
+            <p class="lead" id="hist-lead">Median age of passenger cars voluntarily de-registered each year since 2015.</p>
+            <div class="note" style="margin-top: 22px">
+              <p>
+                In 2023 and 2024 more than 800,000 de-registrations for "other reasons" were recorded, involving cars with a median age of about 50 years, and in December 2025 and February 2026 there were
+                two further peaks under code "A", which is undocumented. Everything points to administrative clean-ups of vehicles that had not been driven for years, so this chart uses voluntary
+                de-registrations only.
+              </p>
+            </div>
+          </div>
+          <figure class="figure reveal">
+            <div id="hist-chart" style="min-height: 320px"></div>
+            <figcaption id="hist-cap">Data source: Dirección General de Tráfico (DGT), de-registration microdata, {{hist-range}}. The latest year includes the months published so far.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section tint" id="mapa">
+        <div class="wrap grid-2">
+          <div class="reveal">
+            <p class="kicker">Map</p>
+            <h2>Where the oldest cars are registered</h2>
+            <p class="lead" id="map-lead">Average age of the passenger car fleet by province.</p>
+            <p><a class="btn" href="/en/map/">View the full map <i data-icon="arrowRight" data-size="16"></i></a></p>
+          </div>
+          <div id="map-teaser" class="reveal"></div>
+        </div>
+      </section>
+
+      <section class="section" id="herramientas">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="kicker">Tools</p>
+            <h2>Your car, compared with the rest</h2>
+          </div>
+          <div class="cards reveal">
+            <a class="card" href="/en/your-car/">
+              <h3>Will it still be on the road in 5 years?</h3>
+              <p class="muted">Choose brand, model and year. We give you the probability, compared with cars of the same age.</p>
+              <span class="pill">Your car <i data-icon="arrowRight" data-size="14"></i></span>
+            </a>
+            <a class="card" href="/en/compare/">
+              <h3>Compare up to four models</h3>
+              <p class="muted">Overlaid curves, median life with its confidence interval and reasons for de-registration.</p>
+              <span class="pill">Compare <i data-icon="arrowRight" data-size="14"></i></span>
+            </a>
+            <a class="card" href="/en/rankings/">
+              <h3>Rankings by segment, fuel type and brand</h3>
+              <p class="muted">The longest-lived in each category, and the models most often exported.</p>
+              <span class="pill">Rankings <i data-icon="arrowRight" data-size="14"></i></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tint" id="honestidad">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="kicker">Before drawing conclusions</p>
+            <h2>Longevity, not reliability</h2>
+          </div>
+          <div class="facts reveal">
+            <div class="fact"><b>No mileage data</b><p>The DGT does not publish mileage. A model that lasts less may simply be one that covers many kilometres, like taxis and VTC (private hire) vehicles.</p></div>
+            <div class="fact"><b>A de-registration is not a breakdown</b><p>It may be a repair that is not worth doing, an accident, a scrappage scheme or an administrative clean-up of the register.</p></div>
+            <div class="fact"><b>Money matters</b><p>An expensive car is repaired for longer because it is worth it. Cheap and expensive models age differently for economic reasons.</p></div>
+            <div class="fact"><b>Exports counted separately</b><p>Cars that are exported (many end up in Africa) are not counted as losses: they are still alive in another country. We show them separately.</p></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!--#footer-->
+    <script type="module" src="/src/pages/home.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>¿Seguirá circulando tu coche dentro de 5 años? · Cuánto dura</title>
+    <meta name="description" content="Elige marca, modelo y año: calculamos la probabilidad de que tu coche siga dado de alta dentro de cinco años y cómo está frente a los coches de su edad." />
+    <link rel="canonical" href="https://cuantodura.aminox.dev/tu-coche/" />
+    <link rel="alternate" hreflang="es" href="https://cuantodura.aminox.dev/tu-coche/" />
+    <link rel="alternate" hreflang="en" href="https://cuantodura.aminox.dev/en/your-car/" />
+    <link rel="alternate" hreflang="x-default" href="https://cuantodura.aminox.dev/tu-coche/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="¿Seguirá circulando tu coche dentro de 5 años? · Cuánto dura" />
+    <meta property="og:description" content="Elige marca, modelo y año: calculamos la probabilidad de que tu coche siga dado de alta dentro de cinco años y cómo está frente a los coches de su edad." />
+    <meta property="og:url" content="https://cuantodura.aminox.dev/tu-coche/" />
+    <meta property="og:image" content="https://cuantodura.aminox.dev/og/home.png" />
+    <meta property="og:locale" content="es_ES" />
+    <!--#head-->
+  </head>
+  <body class="page">
+    <!--#header-->
+    <main id="main">
+      <section class="model-hero"><div class="wrap">
+        <p class="kicker">Tu coche</p>
+        <h1>¿Seguirá en la carretera dentro de cinco años?</h1>
+        <p class="lead" style="margin-top:14px">Dinos qué coche tienes y de qué año es. Con las bajas de los últimos doce meses calculamos qué parte de los coches como el tuyo, a su edad, sigue dada de alta cinco años después.</p>
+        <form class="form-row" id="yc-form" style="margin-top:28px" onsubmit="return false">
+          <label class="field">Marca<select id="yc-brand"></select></label>
+          <label class="field">Modelo<select id="yc-model"></select></label>
+          <label class="field">Año<select id="yc-year"></select></label>
+          <label class="field">Combustible<select id="yc-fuel"><option value="">Cualquiera</option></select></label>
+        </form>
+        <div class="answer" id="yc-answer" aria-live="polite"></div>
+      </div></section>
+      <section class="section" id="yc-more" hidden><div class="wrap">
+        <figure class="figure"><ul class="legend" id="yc-legend"></ul><div id="yc-chart" style="min-height:380px"></div><figcaption id="yc-cap"></figcaption></figure>
+      </div></section>
+    </main>
+    <!--#footer-->
+    <script type="module" src="/src/pages/yourcar.ts"></script>
+  </body>
+</html>

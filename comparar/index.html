@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Comparador de longevidad de coches · Cuánto dura</title>
+    <meta name="description" content="Compara hasta cuatro modelos de coche: curvas de supervivencia superpuestas, vida mediana con intervalo de confianza y motivos de baja, con datos de la DGT." />
+    <link rel="canonical" href="https://cuantodura.aminox.dev/comparar/" />
+    <link rel="alternate" hreflang="es" href="https://cuantodura.aminox.dev/comparar/" />
+    <link rel="alternate" hreflang="en" href="https://cuantodura.aminox.dev/en/compare/" />
+    <link rel="alternate" hreflang="x-default" href="https://cuantodura.aminox.dev/comparar/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Comparador de longevidad de coches · Cuánto dura" />
+    <meta property="og:description" content="Compara hasta cuatro modelos de coche: curvas de supervivencia superpuestas, vida mediana con intervalo de confianza y motivos de baja, con datos de la DGT." />
+    <meta property="og:url" content="https://cuantodura.aminox.dev/comparar/" />
+    <meta property="og:image" content="https://cuantodura.aminox.dev/og/home.png" />
+    <meta property="og:locale" content="es_ES" />
+    <!--#head-->
+  </head>
+  <body class="page">
+    <!--#header-->
+    <main id="main">
+      <section class="model-hero"><div class="wrap">
+        <p class="kicker">Comparador</p>
+        <h1>Compara hasta cuatro modelos</h1>
+        <p class="lead" style="margin-top:14px">Añade modelos con el buscador. La dirección de la página cambia con tu selección, así que puedes compartirla tal cual.</p>
+        <div class="picker" id="picker" style="margin-top:24px"></div>
+        <div id="cmp-search" style="max-width:460px"></div>
+      </div></section>
+      <section class="section" style="border-top:0;padding-top:10px"><div class="wrap">
+        <figure class="figure"><ul class="legend" id="cmp-legend"></ul><div id="cmp-chart" style="min-height:420px"></div><figcaption>Porcentaje que sigue dado de alta a cada edad. Los tramos punteados se estiman con la tabla del segmento por falta de datos propios.</figcaption></figure>
+        <div class="table-scroll" style="margin-top:26px"><table id="cmp-table"></table></div>
+        <div class="share-row"><button class="btn small" type="button" data-share><i data-icon="share" data-size="16"></i><span>Compartir la comparación</span></button></div>
+      </div></section>
+    </main>
+    <!--#footer-->
+    <script type="module" src="/src/pages/compare.ts"></script>
+  </body>
+</html>

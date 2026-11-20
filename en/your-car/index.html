@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Will your car still be on the road in 5 years? · Cuánto dura</title>
+    <meta name="description" content="Choose brand, model and year: we calculate the probability that your car will still be registered in five years, and how it compares with cars of the same age." />
+    <link rel="canonical" href="https://cuantodura.aminox.dev/en/your-car/" />
+    <link rel="alternate" hreflang="es" href="https://cuantodura.aminox.dev/tu-coche/" />
+    <link rel="alternate" hreflang="en" href="https://cuantodura.aminox.dev/en/your-car/" />
+    <link rel="alternate" hreflang="x-default" href="https://cuantodura.aminox.dev/tu-coche/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Will your car still be on the road in 5 years? · Cuánto dura" />
+    <meta property="og:description" content="Choose brand, model and year: we calculate the probability that your car will still be registered in five years, and how it compares with cars of the same age." />
+    <meta property="og:url" content="https://cuantodura.aminox.dev/en/your-car/" />
+    <meta property="og:image" content="https://cuantodura.aminox.dev/og/home-en.png" />
+    <meta property="og:locale" content="en_GB" />
+    <!--#head-->
+  </head>
+  <body class="page">
+    <!--#header-->
+    <main id="main">
+      <section class="model-hero"><div class="wrap">
+        <p class="kicker">Your car</p>
+        <h1>Will it still be on the road in five years?</h1>
+        <p class="lead" style="margin-top:14px">Tell us what car you have and what year it is. Using de-registrations from the last twelve months, we calculate what share of cars like yours, at its current age, are still registered five years later.</p>
+        <form class="form-row" id="yc-form" style="margin-top:28px" onsubmit="return false">
+          <label class="field">Brand<select id="yc-brand"></select></label>
+          <label class="field">Model<select id="yc-model"></select></label>
+          <label class="field">Year<select id="yc-year"></select></label>
+          <label class="field">Fuel type<select id="yc-fuel"><option value="">Any</option></select></label>
+        </form>
+        <div class="answer" id="yc-answer" aria-live="polite"></div>
+      </div></section>
+      <section class="section" id="yc-more" hidden><div class="wrap">
+        <figure class="figure"><ul class="legend" id="yc-legend"></ul><div id="yc-chart" style="min-height:380px"></div><figcaption id="yc-cap"></figcaption></figure>
+      </div></section>
+    </main>
+    <!--#footer-->
+    <script type="module" src="/src/pages/yourcar.ts"></script>
+  </body>
+</html>

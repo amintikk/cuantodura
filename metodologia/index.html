@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Metodología: cómo calculamos cuánto dura un coche · Cuánto dura</title>
+    <meta name="description" content="Tabla de vida de periodo con las bajas definitivas y el parque de la DGT, intervalos de Greenwood, índice estandarizado, normalización de modelos y límites de los datos." />
+    <link rel="canonical" href="https://cuantodura.aminox.dev/metodologia/" />
+    <link rel="alternate" hreflang="es" href="https://cuantodura.aminox.dev/metodologia/" />
+    <link rel="alternate" hreflang="en" href="https://cuantodura.aminox.dev/en/methodology/" />
+    <link rel="alternate" hreflang="x-default" href="https://cuantodura.aminox.dev/metodologia/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Metodología · Cuánto dura" />
+    <meta property="og:description" content="Cómo se calcula la vida de los coches en España con los microdatos de la DGT." />
+    <meta property="og:url" content="https://cuantodura.aminox.dev/metodologia/" />
+    <meta property="og:image" content="https://cuantodura.aminox.dev/og/home.png" />
+    <meta property="og:locale" content="es_ES" />
+    <!--#head-->
+  </head>
+  <body>
+    <!--#header-->
+    <main id="main" class="doc">
+      <div class="wrap narrow">
+        <p class="kicker">Metodología</p>
+        <h1>Cómo calculamos cuánto dura un coche</h1>
+        <p class="lead">
+          Usamos el mismo método con el que los demógrafos calculan la esperanza de vida de un país: una tabla de vida de periodo. Aquí explicamos cada paso, las decisiones que
+          hemos tomado y lo que estos datos no pueden decir.
+        </p>
+        <p class="updated">Periodo actual: {{window-text}} · parque de referencia: {{exposure-month}} · parque actual: {{stock-month}}</p>
+        <nav class="toc" aria-label="Secciones">
+          <a class="pill" href="#datos">Datos</a><a class="pill" href="#tabla">Tabla de vida</a><a class="pill" href="#incertidumbre">Incertidumbre</a><a class="pill" href="#indice">Índice</a><a class="pill" href="#modelos">Modelos</a><a class="pill" href="#cortes">Cortes</a><a class="pill" href="#limites">Límites</a><a class="pill" href="#actualizacion">Actualización</a>
+        </nav>
+
+        <h2 id="datos">1. Los datos</h2>
+        <p>Todo sale de los microdatos públicos de la Dirección General de Tráfico (DGT):</p>
+        <ul>
+          <li>
+            <strong>Bajas mensuales (MATRABA)</strong>, desde enero de 2015: un registro por trámite, en texto de ancho fijo. Leemos la fecha de primera matriculación (si falta,
+            la de matriculación en España), la del trámite, marca, modelo, tipo de vehículo, combustible, cilindrada, potencia, provincia, clave de trámite y motivo de baja. Nos
+            quedamos con los turismos (código de tipo 40).
+          </li>
+          <li><strong>Parque mensual</strong>, vehículo a vehículo, desde marzo de 2025: todos los coches dados de alta al final de cada mes (unos {{stock-millions}} millones de turismos).</li>
+        </ul>
+        <p>
+          Cada fichero se lee en streaming, sin descomprimirlo, y solo guardamos agregados. Comprobamos la lectura con una cifra de referencia: en septiembre de 2026 hay 46.126
+          bajas definitivas de turismos con una edad mediana de 22,3 años (la referencia que nos dieron era 46.125; la diferencia es un registro).
+        </p>
+        <p>Qué cuenta como «muerte» de un coche:</p>
+        <ul>
+          <li><strong>Sí:</strong> baja definitiva (clave de trámite 3) y baja por Plan Renove (clave 4).</li>
+          <li>
+            <strong>No:</strong> la exportación o el tránsito comunitario (clave 7). El coche sigue existiendo en otro país. Lo contamos aparte: hay modelos que salen de España en
+            cantidades notables cuando ya son viejos.
+          </li>
+          <li><strong>No:</strong> la baja temporal (clave 6). El coche puede volver.</li>
+        </ul>
+
+        <h2 id="tabla">2. La tabla de vida de periodo</h2>
+        <p>Para cada grupo (todos los coches, un modelo, un combustible…) y cada edad <em>x</em> en años cumplidos:</p>
+        <code class="formula">m(x) = D(x) / P(x)
+q(x) = m(x) / (1 + m(x)/2)
+S(0) = 1,   S(x+1) = S(x) · (1 − q(x))</code>
+        <ul>
+          <li><strong>D(x)</strong>: bajas definitivas de los últimos 12 meses de coches que tenían <em>x</em> años al darse de baja.</li>
+          <li><strong>P(x)</strong>: coches del grupo con <em>x</em> años en el parque de mitad de periodo (el fichero de {{exposure-month}}).</li>
+          <li>
+            <strong>q(x)</strong>: probabilidad de darse de baja durante ese año de edad. El cociente <em>m</em> es la tasa central que pide el método; la pasamos a
+            probabilidad con la corrección actuarial habitual, porque el parque de mitad de año ya no incluye la mitad de las bajas de ese año. La diferencia es pequeña hasta
+            los 20 años y evita sobrestimar la mortalidad a edades altas.
+          </li>
+          <li><strong>S(x)</strong>: porcentaje que sigue dado de alta a la edad exacta <em>x</em>. Calculamos hasta los 40 años.</li>
+        </ul>
+        <p>
+          De <em>S</em> salen la <strong>vida mediana</strong> (la edad a la que <em>S</em> cruza el 50 %, interpolando entre años) y el porcentaje que sigue a los 10, 15, 20 y 25
+          años. La mediana de todos los turismos es hoy de {{nat-median}} años.
+        </p>
+        <div class="note">
+          <p>
+            <strong>Periodo no es generación.</strong> La curva describe cómo se dan de baja hoy los coches de cada edad. La parte de 20 años la aportan coches de hace 20 años y la
+            de 5, coches recientes. Es lo mismo que la esperanza de vida de un país: no predice el futuro de nadie en concreto, resume las condiciones actuales.
+          </p>
+        </div>
+        <p>
+          Una consecuencia: la edad mediana de los coches que se dieron de baja este año ({{death-median}} años) no es la vida mediana ({{nat-median}}). La primera depende de
+          cuántos coches de cada edad hay; la segunda corrige por ello.
+        </p>
+
+        <h2 id="incertidumbre">3. Incertidumbre y mínimos para publicar</h2>
+        <ul>
+          <li>
+            <strong>Intervalos de confianza al 95 %</strong> con la fórmula de Greenwood y la transformación log(−log), tomando como coches en riesgo P(x) + D(x)/2. El intervalo
+            de la vida mediana se lee donde la banda corta el 50 %.
+          </li>
+          <li>
+            <strong>Edades sin datos propios.</strong> Si en una edad hay menos de {{min-age-exposure}} coches del modelo, esa edad usa el riesgo de su segmento (o de su marca, o de
+            todos). En las gráficas se dibuja punteada.
+          </li>
+          <li>
+            <strong>«Pocos datos».</strong> Un modelo necesita al menos {{min-deaths}} bajas en el año y {{min-exposure}} coches en el parque. Si no llega, enseñamos lo que hay sin dar
+            cifras de duración.
+          </li>
+          <li>
+            <strong>Vida mediana publicada</strong> solo si su intervalo mide {{median-max-ci}} años o menos y al menos el 80 % del riesgo acumulado hasta la mediana procede de
+            datos del propio modelo. Si no, hablamos de «proyección» o no damos cifra. Por eso muchos modelos recientes no tienen vida mediana: todavía no han llegado a la edad.
+          </li>
+        </ul>
+
+        <h2 id="indice">4. El índice de bajas</h2>
+        <p>
+          Comparar medianas solo funciona con modelos que ya tienen muchos años. Para todos los demás calculamos un índice estandarizado, como la razón de mortalidad
+          estandarizada de los epidemiólogos:
+        </p>
+        <code class="formula">índice = 100 · Σ D(x) / Σ P(x) · m_España(x)</code>
+        <p>
+          Es el cociente entre las bajas observadas del modelo y las que tendría si cada uno de sus coches se diera de baja al ritmo medio de los turismos de su edad. 100 es la
+          media; 80 significa un 20 % menos de bajas. El intervalo de confianza usa la aproximación de Byar a la distribución de Poisson. El mismo índice se usa para provincias,
+          generaciones, motores y potencias.
+        </p>
+
+        <h2 id="modelos">5. Normalización de marcas y modelos</h2>
+        <p>
+          El campo de modelo de la DGT es texto libre: «IBIZA 1.9 TDI 5P.», «C220CDI», «R. MEGANE», «NUEVO C3 AIRCROSS PURE». El mismo coche aparece escrito de decenas de
+          formas. Aplicamos la misma función a las bajas y al parque, con tablas revisables en el repositorio
+          (<a href="https://github.com/amintikk/cuantodura/tree/main/pipeline/catalog">pipeline/catalog</a>):
+        </p>
+        <ol>
+          <li>Limpieza: mayúsculas, sin acentos, cualquier signo se convierte en espacio.</li>
+          <li>Equivalencias de marca: MERCEDES y MERCEDES BENZ son Mercedes-Benz; los MINI registrados como BMW pasan a MINI.</li>
+          <li>Reglas por marca, en orden: la primera que encaja da el modelo y su segmento. Se prueban también variantes sin palabras de relleno («NUEVO», «N.», «R.») y con letras y cifras separadas («C220» → «C 220»).</li>
+          <li>Lo que no está en el catálogo se agrupa por su primera palabra, para que la cola larga quede igual en ambas fuentes, pero solo los modelos del catálogo tienen página.</li>
+        </ol>
+        <p><strong>Qué agrupamos y qué no.</strong></p>
+        <ul>
+          <li>Agrupamos carrocerías, motores y versiones de un mismo modelo: Ibiza 3 y 5 puertas, ST o SC; León y León ST; Clase C berlina y familiar; e-208 con 208.</li>
+          <li>Agrupamos las generaciones: un Golf de 1995 y uno de 2015 son «Golf». El corte por año de matriculación permite verlas por separado.</li>
+          <li>
+            Separamos los coches que se venden como productos distintos aunque compartan nombre: Mégane y Scénic, Golf y Golf Plus, C4 y C4 Picasso, Corolla y Corolla Verso, C3 y
+            C3 Aircross, Avensis y Avensis Verso.
+          </li>
+          <li>Los antiguos Mercedes 200-300 D/E (W123, W124) cuentan como Clase E y el 190 como Clase C, sus sucesores.</li>
+        </ul>
+        <h3>Modelos enmascarados en el parque</h3>
+        <p>
+          Para proteger la privacidad, la DGT sustituye por «¡» cualquier valor de modelo que aparezca cinco veces o menos. Como el modelo es texto libre, eso afecta al
+          {{imputed-pct}} de los turismos del parque. No los descartamos, porque el denominador quedaría corto y los modelos parecerían durar menos. Cada coche enmascarado se reparte
+          entre los modelos de su misma marca que se le parecen, en proporción a los coches no enmascarados de su celda: primero por tipo de homologación, año, combustible,
+          cilindrada y potencia; si no hay al menos 10 donantes, por año, motor y peso; y así hasta la marca. Las bajas no están enmascaradas. Cada ficha indica qué parte de su parque
+          se ha asignado así.
+        </p>
+
+        <h2 id="cortes">6. Cortes</h2>
+        <ul>
+          <li><strong>Combustible</strong>: gasolina, diésel, híbrido, híbrido enchufable, eléctrico y gas, combinando el código de propulsión y la categoría eléctrica.</li>
+          <li><strong>Motor</strong>: combustible y cilindrada redondeada a 100 cm³.</li>
+          <li><strong>Potencia</strong>: tramos en kW. Muchos coches de antes de 2005 no tienen la potencia anotada en el registro; este corte usa solo los que sí.</li>
+          <li><strong>Generación</strong>: año de primera matriculación por tramos de cinco años, con el índice de bajas frente a coches de su misma edad.</li>
+          <li><strong>Provincia</strong>: domicilio del vehículo. El mapa usa el parque actual para la edad media y el índice para el ritmo de bajas.</li>
+          <li><strong>Segmento</strong>: asignado a mano en el catálogo (urbano, utilitario, compacto, berlina, SUV…). Los rivales de un modelo son los de su segmento con más unidades.</li>
+        </ul>
+
+        <h2 id="limites">7. Lo que estos datos no dicen</h2>
+        <ul>
+          <li><strong>No hay kilómetros.</strong> Un modelo que se usa mucho como taxi o VTC se da de baja antes aunque sea robusto.</li>
+          <li><strong>Una baja no siempre es una avería.</strong> Puede ser una reparación que no compensa, un siniestro, el Plan Renove o una depuración del registro. Casi todas las bajas llevan el motivo «voluntaria».</li>
+          <li><strong>El dinero pesa.</strong> Un coche caro se repara durante más tiempo porque compensa; un coche barato se desguaza antes ante la misma avería. Por eso hablamos de <em>longevidad</em>, no de fiabilidad.</li>
+          <li><strong>Dado de alta no es circular.</strong> Hay coches que siguen en el registro sin moverse. Hace que las curvas se aplanen a partir de los 25 años.</li>
+          <li>
+            <strong>Bajas administrativas.</strong> En 2023 y 2024 hubo más de 800.000 bajas por «otros motivos» de coches con una edad mediana de unos 50 años, y en diciembre de
+            2025 y febrero de 2026 dos picos con el código «A», que la DGT no documenta (los códigos A y C se muestran tal cual). Todo apunta a depuraciones del registro. Las contamos
+            porque son bajas definitivas, pero afectan sobre todo a edades por encima de los 30. Sin el código A, la vida mediana de todos los turismos sería de {{sens-median}} años en
+            lugar de {{nat-median}}.
+          </li>
+          <li><strong>Bajas de coches en baja temporal.</strong> Un coche en baja temporal no está en el parque, pero si después se da de baja definitiva cuenta en el numerador. El efecto es pequeño, pero existe.</li>
+          <li><strong>Exportaciones jóvenes.</strong> La mayoría de las exportaciones son coches de menos de cinco años que se revenden en otros países de la UE. Para hablar de los coches que «se van a África» miramos solo las de 15 años o más.</li>
+        </ul>
+
+        <h2 id="actualizacion">8. Actualización y validación</h2>
+        <p>
+          Cada mes un proceso automático descarga el nuevo fichero de bajas y el parque, recalcula todo y lo valida antes de publicar: compara el total de bajas, la vida mediana
+          nacional y la de los modelos principales con la versión anterior. Si algo cambia de forma anómala, no publica y avisa para revisarlo a mano. El código está en
+          <a href="https://github.com/amintikk/cuantodura">GitHub</a>, con tests de lectura sobre líneas reales y de las fórmulas sobre datos sintéticos de resultado conocido.
+        </p>
+      </div>
+    </main>
+    <!--#footer-->
+    <script type="module" src="/src/pages/page.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fuentes y datos · Cuánto dura</title>
+    <meta name="description" content="Origen de los datos (DGT), condiciones de reutilización, fecha de actualización y descarga de los datos agregados de Cuánto dura." />
+    <link rel="canonical" href="https://cuantodura.aminox.dev/fuentes/" />
+    <link rel="alternate" hreflang="es" href="https://cuantodura.aminox.dev/fuentes/" />
+    <link rel="alternate" hreflang="en" href="https://cuantodura.aminox.dev/en/sources/" />
+    <link rel="alternate" hreflang="x-default" href="https://cuantodura.aminox.dev/fuentes/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Fuentes y datos · Cuánto dura" />
+    <meta property="og:description" content="Origen de los datos (DGT), condiciones de reutilización, fecha de actualización y descarga de los datos agregados de Cuánto dura." />
+    <meta property="og:image" content="https://cuantodura.aminox.dev/og/home.png" />
+    <!--#head-->
+  </head>
+  <body>
+    <!--#header-->
+    <main id="main" class="doc">
+      <div class="wrap narrow">
+        <p class="kicker">Fuentes</p>
+        <h1>Fuentes y datos</h1>
+        <p class="updated">Datos actualizados en {{data-updated}} · calculados el {{generated-date}}</p>
+        <h2>Origen de los datos</h2>
+        <div class="card">
+          <p><strong>Origen de los datos: Dirección General de Tráfico (DGT), Ministerio del Interior.</strong></p>
+          <p>Microdatos de bajas de vehículos (MATRABA), ficheros mensuales desde enero de 2015, y fichero de parque de vehículos mensual, publicados en <a href="https://www.dgt.es/menusecundario/dgt-en-cifras/" rel="noopener">DGT en cifras</a>.</p>
+          <p>Bajas usadas en el cálculo actual: {{window-text}}. Parque de referencia: {{exposure-month}}. Parque actual: {{stock-month}}.</p>
+        </div>
+        <ul>
+          <li>Diseño de registro de bajas: <a href="https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/matraba/BAJAS_MATRABA.pdf" rel="noopener">BAJAS_MATRABA.pdf</a></li>
+          <li>Diseño del parque mensual: <a href="https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/matraba/Interfaz-de-Salida-Fichero-Parque-Mensual.pdf" rel="noopener">Interfaz de salida del fichero de parque mensual</a></li>
+          <li>Listado del parque: <a href="https://www.dgt.es/menusecundario/dgt-en-cifras/matraba-listados/parque-vehiculos-mensual.html" rel="noopener">parque de vehículos mensual</a></li>
+        </ul>
+        <h2>Condiciones de reutilización</h2>
+        <p>
+          Reutilizamos información del sector público conforme a la Ley 37/2007 y a las condiciones generales de reutilización de los datos abiertos del Gobierno de España: citamos la
+          fuente y la fecha de actualización, no alteramos el sentido de la información y no indicamos ni sugerimos que la DGT participe, patrocine o apoye este proyecto. Las cifras
+          de esta web son elaboración propia a partir de esos datos; los errores de cálculo o interpretación son nuestros, no de la DGT.
+        </p>
+        <p>Los microdatos se publican anonimizados: la DGT enmascara los valores de modelo poco frecuentes y no incluye datos de titulares. No guardamos ni publicamos registros individuales, solo agregados.</p>
+        <h2>Mapa</h2>
+        <p>Límites provinciales: Instituto Geográfico Nacional (IGN), Equipamiento Geográfico de Referencia Nacional, licencia CC BY 4.0, a través de <a href="https://github.com/martgnz/es-atlas" rel="noopener">es-atlas</a> (MIT).</p>
+        <h2>Descargar los datos agregados</h2>
+        <p>Todo lo que ves en la web se sirve como JSON y puedes reutilizarlo citando a la vez a la DGT como fuente y a esta web como elaboración:</p>
+        <ul>
+          <li><a href="/data/overview.json">overview.json</a>: tabla nacional, combustibles, segmentos e histórico desde 2015.</li>
+          <li><a href="/data/index.json">index.json</a>: resumen de todos los modelos.</li>
+          <li><a href="/data/provinces.json">provinces.json</a>: provincias.</li>
+          <li><a href="/data/rankings.json">rankings.json</a>: marcas.</li>
+          <li><code>/data/m/&lt;modelo&gt;.json</code>: ficha completa de cada modelo, por ejemplo <a href="/data/m/seat-ibiza.json">seat-ibiza.json</a>.</li>
+        </ul>
+        <p>El código que descarga los ficheros de la DGT y calcula las tablas está en <a href="https://github.com/amintikk/cuantodura">GitHub</a> con licencia MIT.</p>
+        <h2>Tipografías y bibliotecas</h2>
+        <p>Inter (SIL Open Font License), servidas desde este mismo dominio. Gráficas propias en SVG, sin bibliotecas de terceros en el navegador.</p>
+      </div>
+    </main>
+    <!--#footer-->
+    <script type="module" src="/src/pages/page.ts"></script>
+  </body>
+</html>

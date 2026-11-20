@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cuánto dura · ¿Cuántos años dura de verdad un coche en España?</title>
+    <meta name="description" content="Tablas de supervivencia de cada modelo de coche en España con los datos oficiales de la DGT: vida mediana, porcentaje que sigue circulando a los 15 y 20 años, rankings, comparador y mapa." />
+    <link rel="canonical" href="https://cuantodura.aminox.dev/" />
+    <link rel="alternate" hreflang="es" href="https://cuantodura.aminox.dev/" />
+    <link rel="alternate" hreflang="en" href="https://cuantodura.aminox.dev/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://cuantodura.aminox.dev/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="¿Cuánto dura de verdad un coche en España?" />
+    <meta property="og:description" content="La mitad de los turismos se da de baja antes de los {{nat-median}} años. Busca el tuyo: tablas de supervivencia por modelo con datos de la DGT." />
+    <meta property="og:url" content="https://cuantodura.aminox.dev/" />
+    <meta property="og:image" content="https://cuantodura.aminox.dev/og/home.png" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <!--#head-->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "Cuánto dura",
+            "url": "https://cuantodura.aminox.dev/",
+            "inLanguage": "es",
+            "potentialAction": { "@type": "SearchAction", "target": "https://cuantodura.aminox.dev/comparar/?q={search_term_string}", "query-input": "required name=search_term_string" }
+          },
+          {
+            "@type": "Dataset",
+            "name": "Tablas de supervivencia de turismos en España por modelo",
+            "description": "Vida mediana y porcentaje de coches que siguen dados de alta a cada edad, por marca, modelo, combustible y provincia, calculado con las bajas definitivas y el parque mensual publicados por la DGT.",
+            "url": "https://cuantodura.aminox.dev/fuentes/",
+            "license": "https://opensource.org/licenses/MIT",
+            "creator": { "@type": "Person", "name": "Amin Tahtah Toumi" },
+            "isBasedOn": "https://www.dgt.es/menusecundario/dgt-en-cifras/",
+            "temporalCoverage": "{{window-iso}}",
+            "spatialCoverage": "España",
+            "dateModified": "{{generated-date}}"
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body class="home">
+    <!--#header-->
+    <main id="main">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <p class="kicker">Datos oficiales de la DGT · actualizado en {{data-updated}}</p>
+          <h1>¿Cuánto dura <em>de verdad</em> un coche en España?</h1>
+          <p class="lead">
+            Con las bajas de los últimos doce meses y el registro completo de {{stock-millions}} millones de turismos, esta es la tabla de vida de cada modelo: cuántos siguen
+            dados de alta a los 15, 20 o 25 años, y a qué edad se ha ido ya la mitad.
+          </p>
+          <div class="hero-search" id="hero-search"></div>
+          <figure class="figure hero-figure">
+            <div id="hero-chart" style="min-height: 420px" aria-describedby="hero-cap"></div>
+            <div class="stats" id="hero-stats">
+              <div class="stat"><b class="tnum">{{nat-median}}<small>años</small></b><span>vida mediana de un turismo en España</span></div>
+              <div class="stat"><b class="tnum">{{nat-s20}}</b><span>siguen dados de alta a los 20 años</span></div>
+              <div class="stat"><b class="tnum">{{death-median}}<small>años</small></b><span>edad mediana de los coches que se dieron de baja este año</span></div>
+              <div class="stat"><b class="tnum">{{stock-median-age}}<small>años</small></b><span>edad mediana del parque actual ({{stock-millions}} millones)</span></div>
+            </div>
+            <figcaption id="hero-cap">
+              Porcentaje de turismos que siguen dados de alta en la DGT a cada edad, según las {{nat-deaths}} bajas definitivas de {{window-text}}. Es una tabla de vida de periodo: describe
+              cómo envejece hoy el parque, no la historia de una generación concreta. <a href="/metodologia/">Cómo se calcula</a>.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="carrera">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="kicker">La carrera</p>
+            <h2>Quién aguanta más: los modelos más longevos y los que menos</h2>
+            <p class="lead">Arrancan todos al 100 %. Pulsa reproducir y mira cómo se van quedando por el camino a medida que cumplen años.</p>
+          </div>
+          <div id="race" class="reveal"></div>
+        </div>
+      </section>
+
+      <section class="section tint" id="combustible">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="kicker">Combustible</p>
+            <h2>¿Duran más los diésel?</h2>
+            <p class="lead" id="fuel-lead">Comparamos la curva de cada combustible. Los híbridos y eléctricos aún son jóvenes: su tramo largo se estima con la media y aparece punteado.</p>
+          </div>
+          <figure class="figure reveal">
+            <div id="fuel-chart" style="min-height: 380px"></div>
+            <figcaption>La línea gris es la media de todos los turismos. Pasa el cursor o usa las flechas del teclado para ver cada edad.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="historia">
+        <div class="wrap grid-2">
+          <div class="reveal">
+            <p class="kicker">Tendencia</p>
+            <h2>Los coches se jubilan cada vez más viejos</h2>
+            <p class="lead" id="hist-lead">Edad mediana de los turismos dados de baja voluntariamente cada año desde 2015.</p>
+            <div class="note" style="margin-top: 22px">
+              <p>
+                En 2023 y 2024 se registraron más de 800.000 bajas por «otros motivos» de coches con una edad mediana de unos 50 años, y en diciembre de 2025 y febrero de 2026 hubo otros
+                dos picos con el código «A», sin documentar. Todo apunta a depuraciones administrativas de vehículos que llevaban años sin circular, así que esta gráfica usa solo las bajas
+                voluntarias.
+              </p>
+            </div>
+          </div>
+          <figure class="figure reveal">
+            <div id="hist-chart" style="min-height: 320px"></div>
+            <figcaption id="hist-cap">Fuente: microdatos de bajas de la DGT, {{hist-range}}. El último año incluye los meses publicados.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section tint" id="mapa">
+        <div class="wrap grid-2">
+          <div class="reveal">
+            <p class="kicker">Mapa</p>
+            <h2>Dónde circulan los coches más viejos</h2>
+            <p class="lead" id="map-lead">Edad media del parque de turismos por provincia.</p>
+            <p><a class="btn" href="/mapa/">Ver el mapa completo <i data-icon="arrowRight" data-size="16"></i></a></p>
+          </div>
+          <div id="map-teaser" class="reveal"></div>
+        </div>
+      </section>
+
+      <section class="section" id="herramientas">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="kicker">Herramientas</p>
+            <h2>Tu coche, frente a los demás</h2>
+          </div>
+          <div class="cards reveal">
+            <a class="card" href="/tu-coche/">
+              <h3>¿Seguirá circulando dentro de 5 años?</h3>
+              <p class="muted">Elige marca, modelo y año. Te decimos la probabilidad, comparada con los coches de su quinta.</p>
+              <span class="pill">Tu coche <i data-icon="arrowRight" data-size="14"></i></span>
+            </a>
+            <a class="card" href="/comparar/">
+              <h3>Compara hasta cuatro modelos</h3>
+              <p class="muted">Curvas superpuestas, vida mediana con su intervalo de confianza y motivos de baja.</p>
+              <span class="pill">Comparador <i data-icon="arrowRight" data-size="14"></i></span>
+            </a>
+            <a class="card" href="/rankings/">
+              <h3>Rankings por segmento, combustible y marca</h3>
+              <p class="muted">Los más duraderos de cada categoría y los que más se exportan.</p>
+              <span class="pill">Rankings <i data-icon="arrowRight" data-size="14"></i></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tint" id="honestidad">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="kicker">Antes de sacar conclusiones</p>
+            <h2>Longevidad, no fiabilidad</h2>
+          </div>
+          <div class="facts reveal">
+            <div class="fact"><b>Sin kilómetros</b><p>La DGT no publica el kilometraje. Un modelo que dura poco puede ser uno que hace muchos kilómetros, como los taxis y los VTC.</p></div>
+            <div class="fact"><b>Una baja no es una avería</b><p>Puede ser una reparación que no compensa, un accidente, un plan de achatarramiento o una depuración administrativa del registro.</p></div>
+            <div class="fact"><b>El dinero cuenta</b><p>Un coche caro se repara más tiempo porque compensa. Los modelos baratos y los caros envejecen distinto por razones económicas.</p></div>
+            <div class="fact"><b>Exportados aparte</b><p>Los coches que se exportan (muchos acaban en África) no cuentan como muertos: siguen vivos en otro país. Los mostramos por separado.</p></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!--#footer-->
+    <script type="module" src="/src/pages/home.ts"></script>
+  </body>
+</html>

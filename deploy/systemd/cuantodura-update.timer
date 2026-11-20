@@ -1,0 +1,11 @@
+[Unit]
+Description=Cuánto dura: comprobación diaria de datos nuevos de la DGT (publica una vez al mes)
+
+[Timer]
+OnCalendar=*-*-* 05:40:00 UTC
+RandomizedDelaySec=20m
+Persistent=true
+Unit=cuantodura-update.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rankings of Spain's longest-lasting cars · Cuánto dura</title>
+    <meta name="description" content="The car models that last longest and shortest in Spain by segment, fuel type and brand, and the models most often exported, based on official DGT data." />
+    <link rel="canonical" href="https://cuantodura.aminox.dev/en/rankings/" />
+    <link rel="alternate" hreflang="es" href="https://cuantodura.aminox.dev/rankings/" />
+    <link rel="alternate" hreflang="en" href="https://cuantodura.aminox.dev/en/rankings/" />
+    <link rel="alternate" hreflang="x-default" href="https://cuantodura.aminox.dev/rankings/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Rankings of Spain's longest-lasting cars · Cuánto dura" />
+    <meta property="og:description" content="The car models that last longest and shortest in Spain by segment, fuel type and brand, and the models most often exported, based on official DGT data." />
+    <meta property="og:url" content="https://cuantodura.aminox.dev/en/rankings/" />
+    <meta property="og:image" content="https://cuantodura.aminox.dev/og/home-en.png" />
+    <meta property="og:locale" content="en_GB" />
+    <!--#head-->
+  </head>
+  <body class="page">
+    <!--#header-->
+    <main id="main">
+      <section class="model-hero"><div class="wrap">
+        <p class="kicker">Rankings</p>
+        <h1>The longest-lasting, and those that last least</h1>
+        <p class="lead" style="margin-top:14px">Median life with its confidence interval for models with sufficient data. The de-registration index also allows younger models to be compared: 100 is the average for cars of the same age.</p>
+        <nav class="toc" aria-label="Sections"><a class="pill" href="#modelos">Models</a><a class="pill" href="#segmentos">By segment</a><a class="pill" href="#combustibles">Fuel type</a><a class="pill" href="#marcas">Brands</a><a class="pill" href="#exportados">Exports</a></nav>
+      </div></section>
+      <section class="section" id="modelos"><div class="wrap">
+        <div class="section-head"><h2>All models</h2><p class="muted">Click a column heading to sort. ‘Limited data’: fewer than {{min-deaths}} de-registrations in the year or fewer than {{min-exposure}} cars.</p></div>
+        <div class="picker"><div class="seg" role="group" aria-label="Segment" id="rk-seg"></div></div>
+        <div class="table-scroll" style="max-height:720px"><table id="rk-models"></table></div>
+      </div></section>
+      <section class="section tint" id="segmentos"><div class="wrap"><div class="section-head"><h2>By segment</h2><p class="muted">The three longest- and shortest-lived models in each segment, by median life.</p></div><div class="cards" id="rk-segments"></div></div></section>
+      <section class="section" id="combustibles"><div class="wrap grid-2"><div><h2>By fuel type</h2><p class="lead">Median life and percentage still registered at 20 years.</p></div><div id="rk-fuels"></div></div></section>
+      <section class="section tint" id="marcas"><div class="wrap"><div class="section-head"><h2>By brand</h2><p class="muted">All brands with sufficient data. They mix models from different periods and price ranges: each figure is an average of that brand's fleet.</p></div><div class="table-scroll" style="max-height:640px"><table id="rk-brands"></table></div></div></section>
+      <section class="section" id="exportados"><div class="wrap"><div class="section-head"><h2>The models that leave Spain when old</h2><p class="muted">Exports in the last year of cars aged 15 years or over, per 1,000 units of that age. Exports are not counted as de-registrations.</p></div><div id="rk-exports"></div></div></section>
+    </main>
+    <!--#footer-->
+    <script type="module" src="/src/pages/rankings.ts"></script>
+  </body>
+</html>

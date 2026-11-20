@@ -1,0 +1,749 @@
+# marca;modelo canónico;segmento;patrón (regex sobre el nombre limpio; vacío = empieza por el nombre)
+# El orden importa: dentro de cada marca gana la primera regla que encaja, así que las
+# variantes que se publican aparte (MEGANE SCENIC, GRAND C4 PICASSO, GOLF PLUS...) van antes.
+# Segmentos: urbano, utilitario, compacto, berlina, ejecutivo, monovolumen, suv-pequeno,
+# suv-compacto, suv-grande, todoterreno, deportivo, ludospace.
+SEAT;Ibiza;utilitario;
+SEAT;León;compacto;^LEON\b
+SEAT;Altea;monovolumen;
+SEAT;Toledo;compacto;
+SEAT;Córdoba;utilitario;^CORDOBA\b
+SEAT;Arosa;urbano;
+SEAT;Mii;urbano;^MII\b
+SEAT;Alhambra;monovolumen;
+SEAT;Ateca;suv-compacto;
+SEAT;Arona;suv-pequeno;
+SEAT;Tarraco;suv-grande;
+SEAT;Exeo;berlina;
+SEAT;Marbella;urbano;
+SEAT;Málaga;compacto;^MALAGA\b
+SEAT;Ronda;compacto;
+SEAT;Panda;urbano;
+SEAT;Inca;ludospace;
+SEAT;127;urbano;^(FURA )?127\b
+SEAT;Fura;urbano;^FURA\b
+SEAT;131;berlina;^131\b
+SEAT;600;urbano;^600\b
+SEAT;124;berlina;^124\b
+SEAT;Ritmo;compacto;^RITMO\b
+CUPRA;Formentor;suv-compacto;
+CUPRA;Born;compacto;
+CUPRA;León;compacto;^LEON\b
+CUPRA;Ateca;suv-compacto;
+CUPRA;Terramar;suv-compacto;
+RENAULT;Mégane Scénic;monovolumen;^(MEGANE ?SCENIC|SCENIC|GRAND SCENIC)\b
+RENAULT;Mégane;compacto;^MEGANE\b
+RENAULT;Clio;utilitario;
+RENAULT;Twingo;urbano;
+RENAULT;Laguna;berlina;
+RENAULT;Kangoo;ludospace;
+RENAULT;Espace;monovolumen;
+RENAULT;Grand Espace;monovolumen;^GRAND ESPACE\b
+RENAULT;Modus;monovolumen;^(GRAND )?MODUS\b
+RENAULT;Captur;suv-pequeno;
+RENAULT;Kadjar;suv-compacto;
+RENAULT;Koleos;suv-grande;
+RENAULT;Austral;suv-compacto;
+RENAULT;Arkana;suv-compacto;
+RENAULT;Fluence;compacto;
+RENAULT;Zoe;utilitario;^ZOE\b
+RENAULT;Talisman;berlina;
+RENAULT;Symbol;utilitario;^(CLIO )?SYMBOL\b
+RENAULT;Safrane;ejecutivo;
+RENAULT;Vel Satis;ejecutivo;^VEL ?SATIS\b
+RENAULT;R5;urbano;^(R ?5|5)\b
+RENAULT;R19;compacto;^(R ?19|19)\b
+RENAULT;R21;berlina;^(R ?21|21)\b
+RENAULT;R9;compacto;^(R ?9|9)\b
+RENAULT;R11;compacto;^(R ?11|11)\b
+RENAULT;R4;urbano;^(R ?4|4)\b
+RENAULT;R18;berlina;^(R ?18|18)\b
+RENAULT;Express;ludospace;^EXPRESS\b
+RENAULT;Trafic;monovolumen;^TRAFIC\b
+RENAULT;Master;monovolumen;^MASTER\b
+RENAULT;Rafale;suv-compacto;
+RENAULT;Symbioz;suv-compacto;
+DACIA;Sandero;utilitario;
+DACIA;Logan;utilitario;^(LOGAN|MCV)\b
+DACIA;Duster;suv-compacto;
+DACIA;Dokker;ludospace;
+DACIA;Lodgy;monovolumen;
+DACIA;Jogger;monovolumen;
+DACIA;Spring;urbano;
+DACIA;Bigster;suv-compacto;
+CITROEN;C4 Picasso;monovolumen;^(N ?)?(GRAND |G ?)?C4 ?(SPACE ?TOURER|PI)
+CITROEN;Xsara Picasso;monovolumen;^(XSARA|X) ?PICA
+CITROEN;C3 Picasso;monovolumen;^C3 ?PI
+CITROEN;C3 Aircross;suv-pequeno;^C3 ?AIRCROSS\b
+CITROEN;C5 Aircross;suv-compacto;^C5 ?AIRCROSS\b
+CITROEN;C4 Cactus;compacto;^C4 ?CA(CTUS)?\b
+CITROEN;C5 X;berlina;^C5 ?X\b
+CITROEN;C1;urbano;^C1\b
+CITROEN;C2;urbano;^C2\b
+CITROEN;C3;utilitario;^C3\b
+CITROEN;C4;compacto;^C4\b
+CITROEN;C5;berlina;^C5\b
+CITROEN;C6;ejecutivo;^C6\b
+CITROEN;C8;monovolumen;^C8\b
+CITROEN;C15;ludospace;^C ?15\b
+CITROEN;C4 X;compacto;^C4 ?X\b
+CITROEN;Xsara;compacto;^XSARA\b
+CITROEN;Saxo;utilitario;
+CITROEN;ZX;compacto;^ZX\b
+CITROEN;AX;urbano;^AX\b
+CITROEN;BX;berlina;^BX\b
+CITROEN;Xantia;berlina;
+CITROEN;XM;ejecutivo;^XM\b
+CITROEN;Evasion;monovolumen;
+CITROEN;Berlingo;ludospace;^(BERLINGO|BERL)\b
+CITROEN;Nemo;ludospace;
+CITROEN;Jumpy;monovolumen;^(JUMPY|SPACETOURER|SPACE TOURER)\b
+CITROEN;C-Elysée;utilitario;^C ?ELYSEE\b
+CITROEN;C-Crosser;suv-compacto;^C ?CROSSER\b
+CITROEN;DS3;utilitario;^DS ?3\b
+CITROEN;DS4;compacto;^DS ?4\b
+CITROEN;DS5;berlina;^DS ?5\b
+CITROEN;2CV;urbano;^2 ?CV\b
+CITROEN;C-Zero;urbano;^C ?ZERO\b
+CITROEN;Ami;urbano;^AMI\b
+DS;DS 3;utilitario;^(DS ?)?3\b
+DS;DS 4;compacto;^(DS ?)?4\b
+DS;DS 7;suv-compacto;^(DS ?)?7\b
+DS;DS 5;berlina;^(DS ?)?5\b
+PEUGEOT;206;utilitario;^206\b
+PEUGEOT;207;utilitario;^207\b
+PEUGEOT;208;utilitario;^208\b
+PEUGEOT;205;utilitario;^205\b
+PEUGEOT;106;urbano;^106\b
+PEUGEOT;107;urbano;^107\b
+PEUGEOT;108;urbano;^108\b
+PEUGEOT;306;compacto;^306\b
+PEUGEOT;307;compacto;^307\b
+PEUGEOT;308;compacto;^308\b
+PEUGEOT;309;compacto;^309\b
+PEUGEOT;405;berlina;^405\b
+PEUGEOT;406;berlina;^406\b
+PEUGEOT;407;berlina;^407\b
+PEUGEOT;508;berlina;^508\b
+PEUGEOT;607;ejecutivo;^607\b
+PEUGEOT;806;monovolumen;^806\b
+PEUGEOT;807;monovolumen;^807\b
+PEUGEOT;1007;urbano;^1007\b
+PEUGEOT;2008;suv-pequeno;^2008\b
+PEUGEOT;3008;suv-compacto;^3008\b
+PEUGEOT;4007;suv-grande;^4007\b
+PEUGEOT;4008;suv-compacto;^4008\b
+PEUGEOT;5008;suv-grande;^5008\b
+PEUGEOT;408;compacto;^408\b
+PEUGEOT;301;utilitario;^301\b
+PEUGEOT;Partner;ludospace;^(PARTNER|RIFTER|PART)\b
+PEUGEOT;Bipper;ludospace;
+PEUGEOT;Expert;monovolumen;^(EXPERT|TRAVELLER)\b
+PEUGEOT;iOn;urbano;^ION\b
+OPEL;Zafira;monovolumen;^ZAFIRA\b
+OPEL;Astra;compacto;
+OPEL;Corsa;utilitario;^(CORSA|COR)\b
+OPEL;Vectra;berlina;
+OPEL;Insignia;berlina;
+OPEL;Meriva;monovolumen;
+OPEL;Kadett;compacto;
+OPEL;Omega;ejecutivo;
+OPEL;Calibra;deportivo;
+OPEL;Tigra;deportivo;
+OPEL;Agila;urbano;
+OPEL;Frontera;todoterreno;
+OPEL;Combo;ludospace;
+OPEL;Signum;berlina;
+OPEL;Mokka;suv-pequeno;
+OPEL;Antara;suv-compacto;
+OPEL;Crossland;suv-pequeno;
+OPEL;Grandland;suv-compacto;
+OPEL;Adam;urbano;
+OPEL;Karl;urbano;
+OPEL;Cascada;deportivo;
+OPEL;Ascona;berlina;
+OPEL;Vivaro;monovolumen;
+OPEL;Monterey;todoterreno;
+OPEL;Sintra;monovolumen;
+OPEL;Senator;ejecutivo;
+OPEL;Rekord;berlina;
+OPEL;Manta;deportivo;
+OPEL;Ampera;compacto;
+OPEL;Frontera;todoterreno;
+FORD;Focus C-Max;monovolumen;^(FOCUS ?C ?MAX|C ?MAX|GRAND ?C ?MAX)\b
+FORD;Focus;compacto;
+FORD;Fiesta;utilitario;
+FORD;Mondeo;berlina;
+FORD;Escort;compacto;
+FORD;Ka;urbano;^KA\b
+FORD;Fusion;utilitario;
+FORD;Kuga;suv-compacto;
+FORD;S-Max;monovolumen;^S ?MAX\b
+FORD;Galaxy;monovolumen;
+FORD;B-Max;monovolumen;^B ?MAX\b
+FORD;EcoSport;suv-pequeno;^ECO ?SPORT\b
+FORD;Puma;suv-pequeno;
+FORD;Orion;compacto;
+FORD;Sierra;berlina;
+FORD;Scorpio;ejecutivo;
+FORD;Cougar;deportivo;
+FORD;Probe;deportivo;
+FORD;Maverick;todoterreno;
+FORD;Mustang Mach-E;suv-grande;^MUSTANG ?MACH\b
+FORD;Mustang;deportivo;
+FORD;Tourneo Connect;ludospace;^(TOURNEO|TRANSIT) ?CONNECT\b
+FORD;Tourneo Courier;ludospace;^(TOURNEO|TRANSIT) ?COURIER\b
+FORD;Transit;monovolumen;^(TOURNEO|TRANSIT)\b
+FORD;Edge;suv-grande;
+FORD;Ranger;todoterreno;
+FORD;Explorer;suv-grande;
+FORD;Granada;ejecutivo;
+FORD;Capri;deportivo;
+FORD;Courier;ludospace;
+VOLKSWAGEN;Golf Plus;monovolumen;^GOLF ?(PLUS|SPORTSVAN)\b
+VOLKSWAGEN;Golf;compacto;
+VOLKSWAGEN;Polo;utilitario;
+VOLKSWAGEN;Passat;berlina;^PASSAT\b(?! ?CC)
+VOLKSWAGEN;Passat CC;berlina;^(PASSAT ?)?CC\b
+VOLKSWAGEN;Jetta;compacto;
+VOLKSWAGEN;Bora;compacto;
+VOLKSWAGEN;Vento;compacto;
+VOLKSWAGEN;Touran;monovolumen;
+VOLKSWAGEN;Sharan;monovolumen;
+VOLKSWAGEN;Tiguan;suv-compacto;
+VOLKSWAGEN;Touareg;suv-grande;
+VOLKSWAGEN;T-Roc;suv-pequeno;^T ?ROC\b
+VOLKSWAGEN;T-Cross;suv-pequeno;^T ?CROSS\b
+VOLKSWAGEN;Taigo;suv-pequeno;
+VOLKSWAGEN;Up!;urbano;^UP\b
+VOLKSWAGEN;Lupo;urbano;
+VOLKSWAGEN;Fox;urbano;^FOX\b
+VOLKSWAGEN;New Beetle;compacto;^(NEW )?BEETLE\b
+VOLKSWAGEN;Escarabajo;compacto;^(ESCARABAJO|KAFER|1200|1300)\b
+VOLKSWAGEN;Scirocco;deportivo;
+VOLKSWAGEN;Corrado;deportivo;
+VOLKSWAGEN;Eos;deportivo;
+VOLKSWAGEN;Caddy;ludospace;
+VOLKSWAGEN;Transporter;monovolumen;^(TRANSPORTER|CARAVELLE|MULTIVAN|CALIFORNIA|T4|T5|T6)\b
+VOLKSWAGEN;Phaeton;ejecutivo;
+VOLKSWAGEN;Arteon;berlina;
+VOLKSWAGEN;ID.3;compacto;^ID ?3\b
+VOLKSWAGEN;ID.4;suv-compacto;^ID ?4\b
+VOLKSWAGEN;ID.5;suv-compacto;^ID ?5\b
+VOLKSWAGEN;Amarok;todoterreno;
+VOLKSWAGEN;Santana;berlina;
+AUDI;A1;utilitario;^A ?1\b
+AUDI;A2;utilitario;^A ?2\b
+AUDI;A3;compacto;^(A ?3|S ?3|RS ?3)\b
+AUDI;A4;berlina;^(A ?4|S ?4|RS ?4)\b
+AUDI;A5;berlina;^(A ?5|S ?5|RS ?5)\b
+AUDI;A6;ejecutivo;^(A ?6|S ?6|RS ?6|ALLROAD)\b
+AUDI;A7;ejecutivo;^(A ?7|S ?7|RS ?7)\b
+AUDI;A8;ejecutivo;^(A ?8|S ?8)\b
+AUDI;Q2;suv-pequeno;^(Q ?2|SQ ?2)\b
+AUDI;Q3;suv-compacto;^(Q ?3|RS ?Q ?3)\b
+AUDI;Q5;suv-compacto;^(Q ?5|SQ ?5)\b
+AUDI;Q7;suv-grande;^(Q ?7|SQ ?7)\b
+AUDI;Q8;suv-grande;^(Q ?8|SQ ?8|E ?TRON)\b
+AUDI;Q4 e-tron;suv-compacto;^Q ?4\b
+AUDI;TT;deportivo;^TT\b
+AUDI;80;berlina;^80\b
+AUDI;100;ejecutivo;^100\b
+AUDI;90;berlina;^90\b
+BMW;Serie 1;compacto;^(SERIE ?1|1 ?SERIES|1\d\d|M ?1\d\d|M135|M140)
+BMW;Serie 2;compacto;^(SERIE ?2|2 ?SERIES|2\d\d|M ?2\d\d|M235|M240)
+BMW;Serie 3;berlina;^(SERIE ?3|3 ?SERIES|3\d\d|M ?3\b|M340)
+BMW;Serie 4;berlina;^(SERIE ?4|4 ?SERIES|4\d\d|M ?4\b|M440)
+BMW;Serie 5;ejecutivo;^(SERIE ?5|5 ?SERIES|5\d\d|M ?5\b|M550)
+BMW;Serie 6;ejecutivo;^(SERIE ?6|6 ?SERIES|6\d\d|M ?6\b)
+BMW;Serie 7;ejecutivo;^(SERIE ?7|7 ?SERIES|7\d\d)
+BMW;Serie 8;deportivo;^(SERIE ?8|8 ?SERIES|8\d\d|M ?8\b|M850)
+BMW;X1;suv-compacto;^X ?1\b
+BMW;X2;suv-compacto;^X ?2\b
+BMW;X3;suv-compacto;^X ?3\b
+BMW;X4;suv-compacto;^X ?4\b
+BMW;X5;suv-grande;^X ?5\b
+BMW;X6;suv-grande;^X ?6\b
+BMW;X7;suv-grande;^X ?7\b
+BMW;Z3;deportivo;^Z ?3\b
+BMW;Z4;deportivo;^Z ?4\b
+BMW;i3;urbano;^I ?3\b
+BMW;iX;suv-grande;^I ?X\b
+BMW;iX1;suv-compacto;^I ?X ?1\b
+BMW;i4;berlina;^I ?4\b
+MERCEDES-BENZ;Clase A;compacto;^(CLASE ?A|A ?\d{2,3}|A ?CLASS|AMG ?A)\b
+MERCEDES-BENZ;Clase B;monovolumen;^(CLASE ?B|B ?\d{3}|B ?CLASS)\b
+MERCEDES-BENZ;Clase C;berlina;^(CLASE ?C|C ?\d{2,3}|C ?CLASS|AMG ?C|190)\b
+MERCEDES-BENZ;Clase E;ejecutivo;^(CLASE ?E|E ?\d{3}|E ?CLASS|AMG ?E|[23]\d0 ?(E|D|TD|TE|CE|CD|TDT)|W ?12[34])\b
+MERCEDES-BENZ;Clase S;ejecutivo;^(CLASE ?S|S ?\d{3}|S ?CLASS|[345]\d0 ?SE[LC]?)\b
+MERCEDES-BENZ;CLA;compacto;^(CLA|CLASE ?CLA)\b
+MERCEDES-BENZ;CLK;deportivo;^(CLK|CLASE ?CLK)\b
+MERCEDES-BENZ;CLS;ejecutivo;^(CLS|CLASE ?CLS)\b
+MERCEDES-BENZ;SLK;deportivo;^(SLK|SLC|CLASE ?SLK)\b
+MERCEDES-BENZ;SL;deportivo;^(SL|CLASE ?SL)\b
+MERCEDES-BENZ;Clase M / GLE;suv-grande;^(CLASE ?M|ML ?\d*|GLE|CLASE ?GLE|M ?CLASS)\b
+MERCEDES-BENZ;GLA;suv-compacto;^(GLA|CLASE ?GLA)\b
+MERCEDES-BENZ;GLC;suv-compacto;^(GLC|CLASE ?GLC|GLK|CLASE ?GLK)\b
+MERCEDES-BENZ;GLB;suv-compacto;^(GLB|CLASE ?GLB)\b
+MERCEDES-BENZ;Clase G;todoterreno;^(CLASE ?G|G ?\d{3}|G ?CLASS)\b
+MERCEDES-BENZ;GL / GLS;suv-grande;^(GLS?|CLASE ?GLS?)\b
+MERCEDES-BENZ;Clase V / Vito;monovolumen;^(CLASE ?V|V ?\d{3}|VITO|VIANO|MARCO ?POLO|EQV)\b
+MERCEDES-BENZ;Citan;ludospace;^(CITAN|CLASE ?T|T ?\d{3})\b
+MERCEDES-BENZ;Vaneo;monovolumen;
+MERCEDES-BENZ;Clase R;monovolumen;^(CLASE ?R|R ?\d{3})\b
+MERCEDES-BENZ;Sprinter;monovolumen;
+MERCEDES-BENZ;EQA;suv-compacto;
+MERCEDES-BENZ;EQB;suv-compacto;
+MERCEDES-BENZ;EQC;suv-compacto;
+SMART;Fortwo;urbano;^(FORTWO|FOR ?TWO|CITY ?COUPE|CITY|CABRIO|COUPE|SMART|MC ?01|450|451|453)\b
+SMART;Forfour;urbano;^(FORFOUR|FOR ?FOUR)\b
+SMART;#1;suv-compacto;^(1|#1|HASHTAG ONE)\b
+TOYOTA;Corolla Verso;monovolumen;^(COROLLA ?VERSO)\b
+TOYOTA;Yaris Cross;suv-pequeno;^YARIS ?CROSS\b
+TOYOTA;Corolla;compacto;^(COROLLA|AURIS)\b
+TOYOTA;Yaris;utilitario;
+TOYOTA;Aygo;urbano;^AYGO\b
+TOYOTA;Prius;compacto;^PRIUS\b
+TOYOTA;Avensis;berlina;^AVENSIS\b(?! ?VERSO)
+TOYOTA;Avensis Verso;monovolumen;^AVENSIS ?VERSO\b
+TOYOTA;Verso;monovolumen;^VERSO\b
+TOYOTA;C-HR;suv-compacto;^C ?HR\b
+TOYOTA;RAV4;suv-compacto;^RAV ?4\b
+TOYOTA;Land Cruiser;todoterreno;^LAND ?CRUISER\b
+TOYOTA;Hilux;todoterreno;
+TOYOTA;Celica;deportivo;
+TOYOTA;Carina;berlina;
+TOYOTA;Camry;berlina;
+TOYOTA;Starlet;urbano;
+TOYOTA;Urban Cruiser;suv-pequeno;^URBAN ?CRUISER\b
+TOYOTA;GT86;deportivo;^GT ?86\b
+TOYOTA;Proace;monovolumen;^PROACE\b
+TOYOTA;bZ4X;suv-compacto;^BZ ?4 ?X\b
+TOYOTA;Previa;monovolumen;
+TOYOTA;MR2;deportivo;^MR ?2\b
+TOYOTA;IQ;urbano;^IQ\b
+LEXUS;IS;berlina;^IS\b
+LEXUS;NX;suv-compacto;^NX\b
+LEXUS;RX;suv-grande;^RX\b
+LEXUS;UX;suv-compacto;^UX\b
+LEXUS;CT;compacto;^CT\b
+LEXUS;ES;ejecutivo;^ES\b
+LEXUS;GS;ejecutivo;^GS\b
+NISSAN;Qashqai;suv-compacto;
+NISSAN;Juke;suv-pequeno;
+NISSAN;Micra;utilitario;
+NISSAN;Almera Tino;monovolumen;^ALMERA ?TINO\b
+NISSAN;Almera;compacto;
+NISSAN;Primera;berlina;
+NISSAN;Note;utilitario;
+NISSAN;X-Trail;suv-compacto;^X ?TRAIL\b
+NISSAN;Terrano;todoterreno;
+NISSAN;Patrol;todoterreno;
+NISSAN;Pathfinder;todoterreno;
+NISSAN;Navara;todoterreno;
+NISSAN;Pulsar;compacto;
+NISSAN;Sunny;compacto;
+NISSAN;Leaf;compacto;
+NISSAN;Murano;suv-grande;
+NISSAN;Pixo;urbano;
+NISSAN;Tiida;compacto;
+NISSAN;Ariya;suv-compacto;
+NISSAN;Primastar;monovolumen;
+NISSAN;Townstar;ludospace;
+NISSAN;NV200;ludospace;^(E ?)?NV ?200\b
+NISSAN;Serena;monovolumen;
+NISSAN;100NX;deportivo;^100 ?NX\b
+HYUNDAI;Tucson;suv-compacto;^(TUCSON|IX ?35)\b
+HYUNDAI;i10;urbano;^I ?10\b
+HYUNDAI;i20;utilitario;^I ?20\b
+HYUNDAI;i30;compacto;^I ?30\b
+HYUNDAI;i40;berlina;^I ?40\b
+HYUNDAI;ix20;monovolumen;^IX ?20\b
+HYUNDAI;Kona;suv-pequeno;^KONA\b
+HYUNDAI;Bayon;suv-pequeno;
+HYUNDAI;Santa Fe;suv-grande;^SANTA ?FE\b
+HYUNDAI;Getz;utilitario;
+HYUNDAI;Accent;utilitario;
+HYUNDAI;Atos;urbano;^ATOS\b
+HYUNDAI;Elantra;compacto;
+HYUNDAI;Lantra;compacto;
+HYUNDAI;Matrix;monovolumen;
+HYUNDAI;Coupé;deportivo;^(COUPE|S COUPE|TIBURON)\b
+HYUNDAI;Sonata;berlina;
+HYUNDAI;Trajet;monovolumen;
+HYUNDAI;Terracan;todoterreno;
+HYUNDAI;Galloper;todoterreno;
+HYUNDAI;Ioniq 5;suv-compacto;^IONIQ ?5\b
+HYUNDAI;Ioniq;compacto;^IONIQ\b
+HYUNDAI;H-1;monovolumen;^(H ?1|H ?100|STAREX)\b
+HYUNDAI;Pony;utilitario;
+KIA;Sportage;suv-compacto;
+KIA;Ceed;compacto;^(PRO ?)?C ?EE ?D\b
+KIA;Rio;utilitario;
+KIA;Picanto;urbano;
+KIA;Niro;suv-compacto;^(E ?)?NIRO\b
+KIA;Stonic;suv-pequeno;
+KIA;XCeed;suv-compacto;^X ?CEED\b
+KIA;Carens;monovolumen;
+KIA;Sorento;suv-grande;
+KIA;Venga;monovolumen;
+KIA;Soul;suv-pequeno;
+KIA;Carnival;monovolumen;
+KIA;Shuma;compacto;
+KIA;Sephia;compacto;
+KIA;Cerato;compacto;
+KIA;Optima;berlina;
+KIA;Magentis;berlina;
+KIA;Opirus;ejecutivo;
+KIA;Pride;urbano;
+KIA;EV6;suv-compacto;^EV ?6\b
+KIA;Sportage;suv-compacto;
+FIAT;500X;suv-pequeno;^500 ?X\b
+FIAT;500L;monovolumen;^500 ?L\b
+FIAT;500;urbano;^(500|NUOVA 500)\b
+FIAT;Punto;utilitario;^(GRANDE ?)?PUNTO\b
+FIAT;Panda;urbano;
+FIAT;Tipo;compacto;
+FIAT;Bravo;compacto;
+FIAT;Brava;compacto;
+FIAT;Stilo;compacto;
+FIAT;Uno;utilitario;
+FIAT;Seicento;urbano;^(SEICENTO|600)\b
+FIAT;Cinquecento;urbano;
+FIAT;Multipla;monovolumen;
+FIAT;Doblò;ludospace;^DOBLO\b
+FIAT;Qubo;ludospace;
+FIAT;Fiorino;ludospace;
+FIAT;Ulysse;monovolumen;
+FIAT;Idea;monovolumen;
+FIAT;Croma;berlina;
+FIAT;Marea;berlina;
+FIAT;Tempra;berlina;
+FIAT;Palio;utilitario;
+FIAT;Albea;utilitario;
+FIAT;Linea;utilitario;
+FIAT;Sedici;suv-pequeno;
+FIAT;Freemont;suv-grande;
+FIAT;Coupé;deportivo;^COUPE\b
+FIAT;Barchetta;deportivo;
+FIAT;124 Spider;deportivo;^124 ?SPIDER\b
+FIAT;Scudo;monovolumen;
+FIAT;Talento;monovolumen;
+FIAT;Ducato;monovolumen;
+FIAT;Regata;berlina;
+FIAT;Ritmo;compacto;
+FIAT;600;urbano;^600\b
+ABARTH;500;urbano;^(ABARTH ?)?(500|595|695)\b
+ALFA ROMEO;147;compacto;^(ALFA ?)?147\b
+ALFA ROMEO;156;berlina;^(ALFA ?)?156\b
+ALFA ROMEO;159;berlina;^(ALFA ?)?159\b
+ALFA ROMEO;145;compacto;^(ALFA ?)?145\b
+ALFA ROMEO;146;compacto;^(ALFA ?)?146\b
+ALFA ROMEO;155;berlina;^(ALFA ?)?155\b
+ALFA ROMEO;166;ejecutivo;^(ALFA ?)?166\b
+ALFA ROMEO;164;ejecutivo;^(ALFA ?)?164\b
+ALFA ROMEO;33;compacto;^(ALFA ?)?33\b
+ALFA ROMEO;75;berlina;^(ALFA ?)?75\b
+ALFA ROMEO;GT;deportivo;^(ALFA ?)?GT\b
+ALFA ROMEO;GTV / Spider;deportivo;^(ALFA ?)?(GTV|SPIDER)\b
+ALFA ROMEO;Brera;deportivo;
+ALFA ROMEO;MiTo;utilitario;^MITO\b
+ALFA ROMEO;Giulietta;compacto;
+ALFA ROMEO;Giulia;berlina;
+ALFA ROMEO;Stelvio;suv-compacto;
+ALFA ROMEO;Tonale;suv-compacto;
+ALFA ROMEO;Junior;suv-pequeno;
+LANCIA;Ypsilon;urbano;^(Y|YPSILON)\b
+LANCIA;Delta;compacto;
+LANCIA;Lybra;berlina;
+LANCIA;Dedra;berlina;
+LANCIA;Kappa;ejecutivo;
+LANCIA;Thema;ejecutivo;
+LANCIA;Phedra;monovolumen;
+LANCIA;Zeta;monovolumen;
+LANCIA;Musa;monovolumen;
+LANCIA;Voyager;monovolumen;
+SKODA;Octavia;compacto;
+SKODA;Fabia;utilitario;
+SKODA;Superb;berlina;
+SKODA;Roomster;ludospace;
+SKODA;Yeti;suv-compacto;
+SKODA;Rapid;compacto;
+SKODA;Kodiaq;suv-grande;
+SKODA;Karoq;suv-compacto;
+SKODA;Kamiq;suv-pequeno;
+SKODA;Scala;compacto;
+SKODA;Citigo;urbano;
+SKODA;Felicia;utilitario;
+SKODA;Enyaq;suv-compacto;
+SKODA;Elroq;suv-compacto;
+VOLVO;XC90;suv-grande;^XC ?90\b
+VOLVO;XC60;suv-compacto;^XC ?60\b
+VOLVO;XC40;suv-compacto;^(XC ?40|EX ?40)\b
+VOLVO;V40;compacto;^V ?40\b
+VOLVO;S40;berlina;^S ?40\b
+VOLVO;V50;compacto;^V ?50\b
+VOLVO;S60;berlina;^S ?60\b
+VOLVO;V60;berlina;^V ?60\b
+VOLVO;S80;ejecutivo;^S ?80\b
+VOLVO;V70;berlina;^(V ?70|XC ?70)\b
+VOLVO;S70;berlina;^S ?70\b
+VOLVO;850;berlina;^850\b
+VOLVO;440;compacto;^4[46]0\b
+VOLVO;C30;compacto;^C ?30\b
+VOLVO;C70;deportivo;^C ?70\b
+VOLVO;S90;ejecutivo;^S ?90\b
+VOLVO;V90;ejecutivo;^V ?90\b
+VOLVO;240;berlina;^2[46]0\b
+VOLVO;740 / 940;ejecutivo;^[79][46]0\b
+VOLVO;EX30;suv-pequeno;^EX ?30\b
+MAZDA;3;compacto;^(MAZDA ?)?3\b
+MAZDA;6;berlina;^(MAZDA ?)?6\b
+MAZDA;2;utilitario;^(MAZDA ?)?2\b
+MAZDA;5;monovolumen;^(MAZDA ?)?5\b
+MAZDA;323;compacto;^323\b
+MAZDA;626;berlina;^626\b
+MAZDA;121;urbano;^121\b
+MAZDA;Premacy;monovolumen;
+MAZDA;MX-5;deportivo;^MX ?5\b
+MAZDA;CX-5;suv-compacto;^CX ?5\b
+MAZDA;CX-3;suv-pequeno;^CX ?3\b
+MAZDA;CX-30;suv-compacto;^CX ?30\b
+MAZDA;CX-60;suv-grande;^CX ?60\b
+MAZDA;CX-7;suv-grande;^CX ?7\b
+MAZDA;RX-8;deportivo;^RX ?8\b
+MAZDA;Tribute;suv-compacto;
+MAZDA;Demio;utilitario;
+MAZDA;Xedos;berlina;
+MAZDA;MX-3;deportivo;^MX ?3\b
+MAZDA;MX-30;suv-compacto;^MX ?30\b
+HONDA;Civic;compacto;
+HONDA;Accord;berlina;
+HONDA;Jazz;utilitario;
+HONDA;CR-V;suv-compacto;^CR ?V\b
+HONDA;HR-V;suv-pequeno;^HR ?V\b
+HONDA;FR-V;monovolumen;^FR ?V\b
+HONDA;Prelude;deportivo;
+HONDA;Logo;urbano;
+HONDA;Insight;compacto;
+HONDA;Concerto;compacto;
+HONDA;Stream;monovolumen;
+HONDA;Shuttle;monovolumen;
+HONDA;ZR-V;suv-compacto;^ZR ?V\b
+HONDA;e;urbano;^E\b
+MITSUBISHI;Montero;todoterreno;^(MONTERO|PAJERO)\b
+MITSUBISHI;ASX;suv-compacto;
+MITSUBISHI;Outlander;suv-compacto;
+MITSUBISHI;Space Star;urbano;^SPACE ?STAR\b
+MITSUBISHI;Colt;utilitario;
+MITSUBISHI;Lancer;compacto;
+MITSUBISHI;Carisma;compacto;
+MITSUBISHI;Galant;berlina;
+MITSUBISHI;L200;todoterreno;^L ?200\b
+MITSUBISHI;Space Wagon;monovolumen;^SPACE ?(WAGON|RUNNER)\b
+MITSUBISHI;Eclipse Cross;suv-compacto;^ECLIPSE ?CROSS\b
+MITSUBISHI;Grandis;monovolumen;
+MITSUBISHI;i-MiEV;urbano;^I ?MIEV\b
+SUZUKI;Vitara;suv-pequeno;^(GRAND ?)?VITARA\b
+SUZUKI;Swift;utilitario;
+SUZUKI;Jimny;todoterreno;
+SUZUKI;SX4;suv-pequeno;^(SX ?4|S ?CROSS)\b
+SUZUKI;Ignis;urbano;
+SUZUKI;Alto;urbano;
+SUZUKI;Baleno;compacto;
+SUZUKI;Samurai;todoterreno;^(SAMURAI|SJ)\b
+SUZUKI;Wagon R;urbano;^WAGON ?R\b
+SUZUKI;Splash;urbano;
+SUZUKI;Liana;compacto;
+SUZUKI;Celerio;urbano;
+SUZUKI;Across;suv-compacto;
+SUZUKI;Swace;compacto;
+SUBARU;Impreza;compacto;
+SUBARU;Forester;suv-compacto;
+SUBARU;Outback;berlina;
+SUBARU;Legacy;berlina;
+SUBARU;XV;suv-compacto;^(XV|CROSSTREK)\b
+CHEVROLET;Aveo;utilitario;^(AVEO|KALOS)\b
+CHEVROLET;Kalos;utilitario;^KALOS\b
+CHEVROLET;Lacetti;compacto;^(LACETTI|NUBIRA)\b
+CHEVROLET;Cruze;compacto;^CRU[CZ]E\b
+CHEVROLET;Matiz;urbano;
+CHEVROLET;Spark;urbano;
+CHEVROLET;Captiva;suv-grande;
+CHEVROLET;Epica;berlina;^(EPICA|EVANDA)\b
+CHEVROLET;Tacuma;monovolumen;^(TACUMA|REZZO)\b
+CHEVROLET;Orlando;monovolumen;
+CHEVROLET;Trax;suv-pequeno;
+CHEVROLET;Camaro;deportivo;
+CHEVROLET;Corvette;deportivo;
+DAEWOO;Lanos;compacto;
+DAEWOO;Nubira;compacto;
+DAEWOO;Matiz;urbano;
+DAEWOO;Kalos;utilitario;
+DAEWOO;Leganza;berlina;
+DAEWOO;Tacuma;monovolumen;^(TACUMA|REZZO)\b
+DAEWOO;Nexia;compacto;
+DAEWOO;Espero;berlina;
+DAEWOO;Lacetti;compacto;
+DAEWOO;Korando;todoterreno;
+DAEWOO;Musso;todoterreno;
+ROVER;25;compacto;^(ROVER ?)?(25|200|2\d\d)\b
+ROVER;45;compacto;^(ROVER ?)?(45|400|4\d\d)\b
+ROVER;75;berlina;^(ROVER ?)?75\b
+ROVER;600;berlina;^(ROVER ?)?6\d\d\b
+ROVER;100;urbano;^(ROVER ?)?(100|1\d\d|METRO)\b
+ROVER;Streetwise;compacto;
+MG;ZS;suv-pequeno;^ZS\b
+MG;HS;suv-compacto;^HS\b
+MG;MG4;compacto;^(MG ?)?4\b
+MG;3;utilitario;^(MG ?)?3\b
+MG;Marvel R;suv-compacto;^MARVEL\b
+MG;ZR;compacto;^ZR\b
+MG;ZT;berlina;^ZT\b
+MG;TF / MGF;deportivo;^(TF|MGF|F)\b
+MG;EHS;suv-compacto;^EHS\b
+MG;MG5;compacto;^(MG ?)?5\b
+MINI;Countryman;suv-compacto;^(MINI ?)?COUNTRYMAN\b
+MINI;Clubman;compacto;^(MINI ?)?CLUBMAN\b
+MINI;Paceman;suv-compacto;^(MINI ?)?PACEMAN\b
+MINI;Mini;urbano;^(MINI|ONE|COOPER|JOHN COOPER|R5\d|F5\d)\b
+JEEP;Grand Cherokee;todoterreno;^GRAND ?CHEROKEE\b
+JEEP;Cherokee;todoterreno;
+JEEP;Wrangler;todoterreno;
+JEEP;Compass;suv-compacto;
+JEEP;Renegade;suv-pequeno;
+JEEP;Avenger;suv-pequeno;
+JEEP;Patriot;suv-compacto;
+JEEP;Commander;suv-grande;
+CHRYSLER;Voyager;monovolumen;^(GRAND ?)?VOYAGER\b
+CHRYSLER;PT Cruiser;compacto;^PT ?CRUISER\b
+CHRYSLER;300C;ejecutivo;^300\b
+CHRYSLER;Neon;compacto;
+CHRYSLER;Sebring;berlina;
+CHRYSLER;Stratus;berlina;
+DODGE;Caliber;compacto;
+DODGE;Journey;monovolumen;
+DODGE;Nitro;suv-compacto;
+LAND ROVER;Range Rover Evoque;suv-compacto;^(RANGE ?ROVER ?)?EVOQUE\b
+LAND ROVER;Range Rover Sport;suv-grande;^RANGE ?ROVER ?SPORT\b
+LAND ROVER;Range Rover Velar;suv-grande;^(RANGE ?ROVER ?)?VELAR\b
+LAND ROVER;Range Rover;suv-grande;^RANGE ?ROVER\b
+LAND ROVER;Discovery Sport;suv-compacto;^DISCOVERY ?SPORT\b
+LAND ROVER;Discovery;todoterreno;
+LAND ROVER;Freelander;suv-compacto;
+LAND ROVER;Defender;todoterreno;
+JAGUAR;XF;ejecutivo;^XF\b
+JAGUAR;XE;berlina;^XE\b
+JAGUAR;X-Type;berlina;^X ?TYPE\b
+JAGUAR;S-Type;ejecutivo;^S ?TYPE\b
+JAGUAR;XJ;ejecutivo;^(XJ|SOVEREIGN)\b
+JAGUAR;F-Pace;suv-compacto;^F ?PACE\b
+JAGUAR;E-Pace;suv-compacto;^E ?PACE\b
+JAGUAR;I-Pace;suv-grande;^I ?PACE\b
+JAGUAR;XK;deportivo;^(XK|F ?TYPE)\b
+SAAB;9-3;berlina;^9 ?3\b
+SAAB;9-5;ejecutivo;^9 ?5\b
+SAAB;900;berlina;^900\b
+SAAB;9000;ejecutivo;^9000\b
+SSANGYONG;Rexton;todoterreno;
+SSANGYONG;Korando;suv-compacto;
+SSANGYONG;Kyron;todoterreno;
+SSANGYONG;Tivoli;suv-pequeno;
+SSANGYONG;Rodius;monovolumen;
+SSANGYONG;Actyon;suv-compacto;
+SSANGYONG;Musso;todoterreno;
+SSANGYONG;Torres;suv-compacto;
+PORSCHE;911;deportivo;^(911|993|996|997|991|992|CARRERA)\b
+PORSCHE;Cayenne;suv-grande;
+PORSCHE;Macan;suv-compacto;
+PORSCHE;Boxster / Cayman;deportivo;^(BOXSTER|CAYMAN|718)\b
+PORSCHE;Panamera;ejecutivo;
+PORSCHE;Taycan;ejecutivo;
+TESLA;Model 3;berlina;^(MODEL ?)?3\b
+TESLA;Model Y;suv-compacto;^(MODEL ?)?Y\b
+TESLA;Model S;ejecutivo;^(MODEL ?)?S\b
+TESLA;Model X;suv-grande;^(MODEL ?)?X\b
+TALBOT;Horizon;compacto;
+TALBOT;Samba;urbano;
+TALBOT;Solara;berlina;
+TALBOT;150;berlina;^150\b
+LADA;Niva;todoterreno;^(NIVA|2121|4X4)\b
+LADA;Samara;compacto;
+INFINITI;Q30;compacto;^Q ?30\b
+DAIHATSU;Terios;todoterreno;
+DAIHATSU;Sirion;utilitario;
+DAIHATSU;Cuore;urbano;
+DAIHATSU;Feroza;todoterreno;
+BYD;Atto 3;suv-compacto;^ATTO ?3\b
+BYD;Seal;berlina;^SEAL\b
+BYD;Dolphin;compacto;
+POLESTAR;2;berlina;^(POLESTAR ?)?2\b
+OPEL;Corsa;utilitario;^COR\b
+PEUGEOT;Partner;ludospace;^PART\b
+CITROEN;Berlingo;ludospace;^BERL\b
+SEAT;850;urbano;^850\b
+SEAT;1430;berlina;^1430\b
+SEAT;1500;berlina;^1500\b
+SEAT;1400;berlina;^1400\b
+SEAT;132;berlina;^132\b
+SEAT;133;urbano;^133\b
+SEAT;128;compacto;^128\b
+SEAT;1200 Sport;deportivo;^1200 ?SPORT\b
+SEAT;800;urbano;^800\b
+SIMCA;1000;urbano;^1000\b
+SIMCA;1200;compacto;^1200\b
+SIMCA;900;urbano;^900\b
+CHRYSLER;150;compacto;^150\b
+CHRYSLER;180;berlina;^18\d\b
+PEUGEOT;504;berlina;^504\b
+PEUGEOT;505;berlina;^505\b
+PEUGEOT;404;berlina;^404\b
+PEUGEOT;605;ejecutivo;^605\b
+PEUGEOT;104;urbano;^104\b
+PEUGEOT;305;berlina;^305\b
+CITROEN;GS;compacto;^GSA?\b
+CITROEN;Dyane;urbano;
+CITROEN;CX;ejecutivo;^CX\b
+CITROEN;Visa;urbano;
+CITROEN;Méhari;urbano;^(E ?)?MEHARI\b
+FORD;Taunus;berlina;
+DODGE;Dart;berlina;
+DODGE;3700;berlina;^3700\b
+TALBOT;1200;compacto;^1200\b
+AUSTIN;Victoria;berlina;
+AUSTIN;Montego;berlina;
+AUSTIN;Allegro;compacto;
+AUSTIN;Mini;urbano;^MINI\b
+MORRIS;Mini;urbano;^MINI\b
+MORRIS;1100;compacto;^1100\b
+MG;1100;compacto;^1[13]00\b
+TATA;Indica;utilitario;
+NISSAN;Almera Tino;monovolumen;^TINO\b
+DAEWOO;Aranos;berlina;
+MERCEDES-BENZ;CLE;deportivo;^CLE\b
+MERCEDES-BENZ;CLC;compacto;^CLC\b
+MERCEDES-BENZ;EQE;ejecutivo;^EQE\b
+OMODA;5;suv-compacto;^(OMODA ?)?5\b
+OMODA;9;suv-grande;^(OMODA ?)?9\b
+OMODA;7;suv-compacto;^(OMODA ?)?7\b
+JAECOO;7;suv-compacto;^(JAECOO ?)?7\b
+JAECOO;5;suv-compacto;^(JAECOO ?)?5\b
+EBRO;s700;suv-compacto;^S ?700\b
+EBRO;s400;suv-compacto;^S ?400\b
+EBRO;s800;suv-grande;^S ?800\b
+LYNK & CO;01;suv-compacto;^0?1\b
+LYNK & CO;08;suv-grande;^0?8\b
+KIA;EV3;suv-pequeno;^EV ?3\b
+LEXUS;LBX;suv-pequeno;^LBX\b
+HYUNDAI;Inster;urbano;
+VOLKSWAGEN;Tayron;suv-grande;
+BYD;Atto 3;suv-compacto;^ATTO\b
+BYD;Sealion;suv-compacto;
+SMART;#1;suv-compacto;^EQ\b
+MINI;Aceman;suv-pequeno;
+MINI;Mini;urbano;^MAN\b
+LEAPMOTOR;T03;urbano;^T ?03\b
+LEAPMOTOR;B10;suv-compacto;^B ?10\b
+LEAPMOTOR;C10;suv-compacto;^C ?10\b
+MITSUBISHI;Galloper;todoterreno;
+DR;3;suv-pequeno;^(DR ?)?3\b

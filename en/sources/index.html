@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sources and data · Cuánto dura</title>
+    <meta name="description" content="Data source (DGT), reuse conditions, update date and download of the aggregated Cuánto dura data." />
+    <link rel="canonical" href="https://cuantodura.aminox.dev/en/sources/" />
+    <link rel="alternate" hreflang="es" href="https://cuantodura.aminox.dev/fuentes/" />
+    <link rel="alternate" hreflang="en" href="https://cuantodura.aminox.dev/en/sources/" />
+    <link rel="alternate" hreflang="x-default" href="https://cuantodura.aminox.dev/fuentes/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sources and data · Cuánto dura" />
+    <meta property="og:description" content="Data source (DGT), reuse conditions, update date and download of the aggregated Cuánto dura data." />
+    <meta property="og:image" content="https://cuantodura.aminox.dev/og/home-en.png" />
+    <!--#head-->
+  </head>
+  <body>
+    <!--#header-->
+    <main id="main" class="doc">
+      <div class="wrap narrow">
+        <p class="kicker">Sources</p>
+        <h1>Sources and data</h1>
+        <p class="updated">Data updated {{data-updated}} · calculated on {{generated-date}}</p>
+        <h2>Data source</h2>
+        <div class="card">
+          <p><strong>Data source: Dirección General de Tráfico (DGT), Spain's Ministry of the Interior.</strong></p>
+          <p>Vehicle de-registration microdata (MATRABA), monthly files since January 2015, and the monthly vehicle fleet file, published on <a href="https://www.dgt.es/menusecundario/dgt-en-cifras/" rel="noopener">DGT en cifras</a>.</p>
+          <p>De-registrations used in the current calculation: {{window-text}}. Reference fleet: {{exposure-month}}. Current fleet: {{stock-month}}.</p>
+        </div>
+        <ul>
+          <li>Record layout of de-registrations: <a href="https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/matraba/BAJAS_MATRABA.pdf" rel="noopener">BAJAS_MATRABA.pdf</a></li>
+          <li>Layout of the monthly fleet file: <a href="https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/matraba/Interfaz-de-Salida-Fichero-Parque-Mensual.pdf" rel="noopener">Output interface of the monthly fleet file</a></li>
+          <li>Fleet listing: <a href="https://www.dgt.es/menusecundario/dgt-en-cifras/matraba-listados/parque-vehiculos-mensual.html" rel="noopener">monthly vehicle fleet</a></li>
+        </ul>
+        <h2>Reuse conditions</h2>
+        <p>
+          We reuse public sector information under Ley 37/2007 (Spain's public sector information re-use law) and the general reuse conditions for the Spanish Government's open data: we cite the
+          source and the update date, we do not alter the meaning of the information, and we do not state or suggest that the DGT participates in, sponsors or endorses this project. The figures on
+          this website are our own work based on that data; any calculation or interpretation errors are ours, not the DGT's.
+        </p>
+        <p>The microdata are published anonymised: the DGT masks infrequent model values and does not include owner data. We do not store or publish individual records, only aggregates.</p>
+        <h2>Map</h2>
+        <p>Provincial boundaries: Instituto Geográfico Nacional (IGN), Equipamiento Geográfico de Referencia Nacional, licence CC BY 4.0, via <a href="https://github.com/martgnz/es-atlas" rel="noopener">es-atlas</a> (MIT).</p>
+        <h2>Download the aggregated data</h2>
+        <p>Everything you see on the website is served as JSON. You may reuse it, citing the DGT as the source and this website for the processing:</p>
+        <ul>
+          <li><a href="/data/overview.json">overview.json</a>: national table, fuel types, segments and history since 2015.</li>
+          <li><a href="/data/index.json">index.json</a>: summary of all models.</li>
+          <li><a href="/data/provinces.json">provinces.json</a>: provinces.</li>
+          <li><a href="/data/rankings.json">rankings.json</a>: brands.</li>
+          <li><code>/data/m/&lt;model&gt;.json</code>: full record for each model, for example <a href="/data/m/seat-ibiza.json">seat-ibiza.json</a>.</li>
+        </ul>
+        <p>The code that downloads the DGT files and calculates the tables is on <a href="https://github.com/amintikk/cuantodura">GitHub</a> under the MIT licence.</p>
+        <h2>Typefaces and libraries</h2>
+        <p>Inter (SIL Open Font License), served from this same domain. Our own charts are in SVG, with no third-party libraries in the browser.</p>
+      </div>
+    </main>
+    <!--#footer-->
+    <script type="module" src="/src/pages/page.ts"></script>
+  </body>
+</html>

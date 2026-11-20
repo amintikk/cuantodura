@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mapa de la edad del parque de coches por provincia · Cuánto dura</title>
+    <meta name="description" content="Edad media de los turismos por provincia en España, porcentaje con más de 20 años, índice de bajas y exportaciones, con datos de la DGT." />
+    <link rel="canonical" href="https://cuantodura.aminox.dev/mapa/" />
+    <link rel="alternate" hreflang="es" href="https://cuantodura.aminox.dev/mapa/" />
+    <link rel="alternate" hreflang="en" href="https://cuantodura.aminox.dev/en/map/" />
+    <link rel="alternate" hreflang="x-default" href="https://cuantodura.aminox.dev/mapa/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mapa de la edad del parque de coches por provincia · Cuánto dura" />
+    <meta property="og:description" content="Edad media de los turismos por provincia en España, porcentaje con más de 20 años, índice de bajas y exportaciones, con datos de la DGT." />
+    <meta property="og:url" content="https://cuantodura.aminox.dev/mapa/" />
+    <meta property="og:image" content="https://cuantodura.aminox.dev/og/home.png" />
+    <meta property="og:locale" content="es_ES" />
+    <!--#head-->
+  </head>
+  <body class="page">
+    <!--#header-->
+    <main id="main">
+      <section class="model-hero"><div class="wrap">
+        <p class="kicker">Mapa</p>
+        <h1>La edad de los coches, provincia a provincia</h1>
+        <p class="lead" style="margin-top:14px" id="map-lead">Edad media del parque de turismos dado de alta en cada provincia, según el registro de la DGT de {{stock-month}}.</p>
+        <div class="seg" role="group" aria-label="Qué medir" id="map-metric" style="margin-top:22px">
+          <button type="button" data-k="mean_age" aria-pressed="true">Edad media</button>
+          <button type="button" data-k="share_20" aria-pressed="false">Más de 20 años</button>
+          <button type="button" data-k="index" aria-pressed="false">Índice de bajas</button>
+          <button type="button" data-k="old_export" aria-pressed="false">Exportación</button>
+        </div>
+      </div></section>
+      <section class="section" style="border-top:0;padding-top:10px"><div class="wrap grid-2">
+        <figure class="figure"><div id="map-main"></div><figcaption id="map-cap"></figcaption></figure>
+        <div><div class="table-scroll" style="max-height:640px"><table id="map-table"></table></div></div>
+      </div></section>
+    </main>
+    <!--#footer-->
+    <script type="module" src="/src/pages/map.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "name": "cuantodura",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Cuánto dura de verdad cada coche en España: tablas de supervivencia con datos oficiales de la DGT.",
+  "license": "MIT",
+  "author": "Amin Tahtah Toumi",
+  "homepage": "https://cuantodura.aminox.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amintikk/cuantodura.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build && node scripts/prerender.ts",
+    "preview": "vite preview",
+    "test": "node --test tests/*.test.ts"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "@types/d3-geo": "^3.1.1",
+    "@types/node": "^26.6.6",
+    "@types/topojson-client": "^3.1.5",
+    "d3-composite-projections": "^2.0.0",
+    "d3-geo": "^3.1.2",
+    "es-atlas": "^0.6.0",
+    "topojson-client": "^3.1.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.3.0"
+  }
+}

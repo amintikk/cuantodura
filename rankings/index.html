@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rankings de los coches más longevos de España · Cuánto dura</title>
+    <meta name="description" content="Los modelos de coche que más y menos duran en España por segmento, combustible y marca, y los que más se exportan, con datos oficiales de la DGT." />
+    <link rel="canonical" href="https://cuantodura.aminox.dev/rankings/" />
+    <link rel="alternate" hreflang="es" href="https://cuantodura.aminox.dev/rankings/" />
+    <link rel="alternate" hreflang="en" href="https://cuantodura.aminox.dev/en/rankings/" />
+    <link rel="alternate" hreflang="x-default" href="https://cuantodura.aminox.dev/rankings/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Rankings de los coches más longevos de España · Cuánto dura" />
+    <meta property="og:description" content="Los modelos de coche que más y menos duran en España por segmento, combustible y marca, y los que más se exportan, con datos oficiales de la DGT." />
+    <meta property="og:url" content="https://cuantodura.aminox.dev/rankings/" />
+    <meta property="og:image" content="https://cuantodura.aminox.dev/og/home.png" />
+    <meta property="og:locale" content="es_ES" />
+    <!--#head-->
+  </head>
+  <body class="page">
+    <!--#header-->
+    <main id="main">
+      <section class="model-hero"><div class="wrap">
+        <p class="kicker">Rankings</p>
+        <h1>Los que más duran, y los que menos</h1>
+        <p class="lead" style="margin-top:14px">Vida mediana con su intervalo de confianza para los modelos con datos suficientes. El índice de bajas permite comparar también los modelos jóvenes: 100 es la media de los coches de la misma edad.</p>
+        <nav class="toc" aria-label="Secciones"><a class="pill" href="#modelos">Modelos</a><a class="pill" href="#segmentos">Por segmento</a><a class="pill" href="#combustibles">Combustible</a><a class="pill" href="#marcas">Marcas</a><a class="pill" href="#exportados">Exportados</a></nav>
+      </div></section>
+      <section class="section" id="modelos"><div class="wrap">
+        <div class="section-head"><h2>Todos los modelos</h2><p class="muted">Pulsa en una columna para ordenar. «Pocos datos»: menos de {{min-deaths}} bajas en el año o menos de {{min-exposure}} coches.</p></div>
+        <div class="picker"><div class="seg" role="group" aria-label="Segmento" id="rk-seg"></div></div>
+        <div class="table-scroll" style="max-height:720px"><table id="rk-models"></table></div>
+      </div></section>
+      <section class="section tint" id="segmentos"><div class="wrap"><div class="section-head"><h2>Por segmento</h2><p class="muted">Los tres más y menos longevos de cada segmento, por vida mediana.</p></div><div class="cards" id="rk-segments"></div></div></section>
+      <section class="section" id="combustibles"><div class="wrap grid-2"><div><h2>Por combustible</h2><p class="lead">Vida mediana y porcentaje que sigue de alta a los 20 años.</p></div><div id="rk-fuels"></div></div></section>
+      <section class="section tint" id="marcas"><div class="wrap"><div class="section-head"><h2>Por marca</h2><p class="muted">Todas las marcas con datos suficientes. Mezclan modelos de épocas y precios distintos: es una media del parque de cada marca.</p></div><div class="table-scroll" style="max-height:640px"><table id="rk-brands"></table></div></div></section>
+      <section class="section" id="exportados"><div class="wrap"><div class="section-head"><h2>Los que se van fuera de viejos</h2><p class="muted">Exportaciones en el último año de coches con 15 años o más, por cada 1.000 unidades de esa edad. Las exportaciones no cuentan como bajas.</p></div><div id="rk-exports"></div></div></section>
+    </main>
+    <!--#footer-->
+    <script type="module" src="/src/pages/rankings.ts"></script>
+  </body>
+</html>

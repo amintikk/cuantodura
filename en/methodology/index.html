@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Methodology: how we calculate how long a car lasts · Cuánto dura</title>
+    <meta name="description" content="Period life table built on DGT de-registrations and fleet data, Greenwood confidence intervals, standardised index, model normalisation and data limits." />
+    <link rel="canonical" href="https://cuantodura.aminox.dev/en/methodology/" />
+    <link rel="alternate" hreflang="es" href="https://cuantodura.aminox.dev/metodologia/" />
+    <link rel="alternate" hreflang="en" href="https://cuantodura.aminox.dev/en/methodology/" />
+    <link rel="alternate" hreflang="x-default" href="https://cuantodura.aminox.dev/metodologia/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Methodology · Cuánto dura" />
+    <meta property="og:description" content="How the lifespan of cars in Spain is calculated from DGT microdata." />
+    <meta property="og:url" content="https://cuantodura.aminox.dev/en/methodology/" />
+    <meta property="og:image" content="https://cuantodura.aminox.dev/og/home-en.png" />
+    <meta property="og:locale" content="en_GB" />
+    <!--#head-->
+  </head>
+  <body>
+    <!--#header-->
+    <main id="main" class="doc">
+      <div class="wrap narrow">
+        <p class="kicker">Methodology</p>
+        <h1>How we calculate how long a car lasts</h1>
+        <p class="lead">
+          We use the same method demographers use to calculate a country's life expectancy: a period life table. Here we explain each step, the decisions we have taken and what these data
+          cannot tell us.
+        </p>
+        <p class="updated">Current period: {{window-text}} · reference fleet: {{exposure-month}} · current fleet: {{stock-month}}</p>
+        <nav class="toc" aria-label="Sections">
+          <a class="pill" href="#datos">Data</a><a class="pill" href="#tabla">Life table</a><a class="pill" href="#incertidumbre">Uncertainty</a><a class="pill" href="#indice">Index</a><a class="pill" href="#modelos">Models</a><a class="pill" href="#cortes">Breakdowns</a><a class="pill" href="#limites">Limits</a><a class="pill" href="#actualizacion">Updates</a>
+        </nav>
+
+        <h2 id="datos">1. The data</h2>
+        <p>Everything comes from the public microdata of the Dirección General de Tráfico (DGT), Spain's traffic authority:</p>
+        <ul>
+          <li>
+            <strong>Monthly de-registrations (MATRABA)</strong>, since January 2015: one record per transaction, in fixed-width text. We read the date of first registration (or, if missing, the
+            date of registration in Spain), the date of the transaction, brand, model, vehicle type, fuel type, engine capacity, power, province, transaction code and de-registration reason. We keep
+            passenger cars (vehicle type code 40).
+          </li>
+          <li><strong>Monthly fleet</strong>, vehicle by vehicle, since March 2025: all cars registered at the end of each month (about {{stock-millions}} million passenger cars).</li>
+        </ul>
+        <p>
+          Each file is read in streaming mode, without decompressing it, and we store only aggregates. We check the reading against a reference figure: in September 2026 there are 46,126
+          de-registrations of passenger cars with a median age of 22.3 years (the reference figure we were given was 46,125; the difference is one record).
+        </p>
+        <p>What counts as a car's ‘death’:</p>
+        <ul>
+          <li><strong>Yes:</strong> definitive de-registration (transaction code 3) and de-registration under the Plan Renove scrappage scheme (code 4).</li>
+          <li>
+            <strong>No:</strong> export or intra-EU transit (code 7). The car still exists in another country. We count these separately: some models leave Spain in notable numbers once they are
+            already old.
+          </li>
+          <li><strong>No:</strong> temporary de-registration (code 6). The car may come back.</li>
+        </ul>
+
+        <h2 id="tabla">2. The period life table</h2>
+        <p>For each group (all cars, one model, one fuel type…) and each age <em>x</em> in completed years:</p>
+        <code class="formula">m(x) = D(x) / P(x)
+q(x) = m(x) / (1 + m(x)/2)
+S(0) = 1,   S(x+1) = S(x) · (1 − q(x))</code>
+        <ul>
+          <li><strong>D(x)</strong>: de-registrations over the last 12 months of cars that were <em>x</em> years old when they were de-registered.</li>
+          <li><strong>P(x)</strong>: cars in the group aged <em>x</em> in the mid-period fleet (the {{exposure-month}} file).</li>
+          <li>
+            <strong>q(x)</strong>: probability of being de-registered during that year of age. The ratio <em>m</em> is the central rate the method calls for; we convert it to a probability with the
+            usual actuarial correction, because the mid-year fleet no longer includes half of that year's de-registrations. The difference is small up to 20 years and avoids overstating
+            mortality at older ages.
+          </li>
+          <li><strong>S(x)</strong>: percentage still registered at exact age <em>x</em>. We calculate up to 40 years.</li>
+        </ul>
+        <p>
+          From <em>S</em> we obtain the <strong>median life</strong> (the age at which <em>S</em> crosses 50 %, interpolating between years) and the percentage still registered at 10, 15, 20
+          and 25 years. The median for all passenger cars is currently {{nat-median}} years.
+        </p>
+        <div class="note">
+          <p>
+            <strong>Period is not generation.</strong> The curve describes how cars of each age are de-registered today. The 20-year part comes from cars registered 20 years ago, and the 5-year
+            part from recent cars. It is the same as a country's life expectancy: it does not predict the future of anyone in particular; it summarises current conditions.
+          </p>
+        </div>
+        <p>
+          One consequence: the median age of the cars de-registered this year ({{death-median}} years) is not the median life ({{nat-median}}). The first depends on how many cars of each age there
+          are; the second corrects for that.
+        </p>
+
+        <h2 id="incertidumbre">3. Uncertainty and minimum thresholds for publication</h2>
+        <ul>
+          <li>
+            <strong>95 % confidence intervals</strong> using Greenwood's formula and the log(−log) transformation, taking as cars at risk P(x) + D(x)/2. The interval for the median life is read
+            where the band crosses 50 %.
+          </li>
+          <li>
+            <strong>Ages without their own data.</strong> If at a given age there are fewer than {{min-age-exposure}} cars of the model, that age uses the risk of its segment (or of its brand, or
+            of all cars). Charts draw it dotted.
+          </li>
+          <li>
+            <strong>‘Limited data’.</strong> A model needs at least {{min-deaths}} de-registrations in the year and {{min-exposure}} cars in the fleet. If it does not reach these, we show what there is
+            without giving duration figures.
+          </li>
+          <li>
+            <strong>Median life is published</strong> only if its interval is {{median-max-ci}} years or less and at least 80 % of the cumulative risk up to the median comes from the model's own data.
+            Otherwise we speak of ‘projection’ or give no figure. That is why many recent models have no median life: they have not yet reached that age.
+          </li>
+        </ul>
+
+        <h2 id="indice">4. The de-registration index</h2>
+        <p>
+          Comparing medians only works for models that already have many years behind them. For all the others we calculate a standardised index, like the standardised mortality ratio used by
+          epidemiologists:
+        </p>
+        <code class="formula">index = 100 · Σ D(x) / Σ P(x) · m_Spain(x)</code>
+        <p>
+          It is the ratio between the model's observed de-registrations and those it would have if each of its cars were de-registered at the average rate for passenger cars of its age. 100 is
+          the average; 80 means 20 % fewer de-registrations. The confidence interval uses Byar's approximation to the Poisson distribution. The same index is used for provinces, generations,
+          engines and power bands.
+        </p>
+
+        <h2 id="modelos">5. Standardising brands and models</h2>
+        <p>
+          The model field in the DGT data is free text: ‘IBIZA 1.9 TDI 5P.’, ‘C220CDI’, ‘R. MEGANE’, ‘NUEVO C3 AIRCROSS PURE’. The same car is written in dozens of ways. We apply the same
+          function to de-registrations and to the fleet, using catalogue tables that can be reviewed in the repository
+          (<a href="https://github.com/amintikk/cuantodura/tree/main/pipeline/catalog">pipeline/catalog</a>):
+        </p>
+        <ol>
+          <li>Cleaning: upper case, no accents, and any punctuation mark becomes a space.</li>
+          <li>Brand equivalences: MERCEDES and MERCEDES BENZ are Mercedes-Benz; MINI cars registered as BMW are counted as MINI.</li>
+          <li>
+            Brand rules, applied in order: the first match gives the model and its segment. Variants without filler words (such as ‘NUEVO’, meaning ‘new’, or ‘N.’ and ‘R.’) are also tried, and
+            variants with letters and digits separated (‘C220’ becomes ‘C 220’).
+          </li>
+          <li>Anything not in the catalogue is grouped by its first word, so that the long tail is treated the same in both sources, but only catalogue models have a page.</li>
+        </ol>
+        <p><strong>What we group and what we do not.</strong></p>
+        <ul>
+          <li>We group bodywork styles, engines and versions of the same model: Ibiza 3 and 5-door, ST or SC; León and León ST; C-Class saloon and estate; e-208 with 208.</li>
+          <li>We group generations: a 1995 Golf and a 2015 Golf are both ‘Golf’. The cut by year of first registration lets you see them separately.</li>
+          <li>
+            We keep apart cars sold as different products even if they share a name: Mégane and Scénic, Golf and Golf Plus, C4 and C4 Picasso, Corolla and Corolla Verso, C3 and C3 Aircross,
+            Avensis and Avensis Verso.
+          </li>
+          <li>The former Mercedes 200–300 D/E (W123, W124) count as the E-Class, and the 190 as the C-Class, their successors.</li>
+        </ul>
+        <h3>Models masked in the fleet</h3>
+        <p>
+          To protect privacy, the DGT replaces with ‘¡’ any model value that appears five times or fewer. Because the model is free text, this affects {{imputed-pct}} of passenger cars in the fleet.
+          We do not discard them, because the denominator would be too small and models would appear to last less. Each masked car is allocated among the models of its own brand that resemble it, in
+          proportion to the unmasked cars in its cell: first by type-approval type, year, fuel type, engine capacity and power; if there are not at least 10 donors, by year, engine and weight; and
+          so on up to the brand. De-registrations are not masked. Each model's page shows what share of its fleet has been allocated in this way.
+        </p>
+
+        <h2 id="cortes">6. Breakdowns</h2>
+        <ul>
+          <li><strong>Fuel type</strong>: petrol, diesel, hybrid, plug-in hybrid, electric and gas, combining the propulsion code and the electric category.</li>
+          <li><strong>Engine</strong>: fuel type and capacity rounded to the nearest 100 cm³.</li>
+          <li><strong>Power</strong>: bands in kW. Many cars registered before 2005 do not have their power recorded in the register; this breakdown uses only those that do.</li>
+          <li><strong>Generation</strong>: year of first registration in five-year bands, with the de-registration index compared with cars of the same age.</li>
+          <li><strong>Province</strong>: address of the vehicle. The map uses the current fleet for average age and the index for the pace of de-registrations.</li>
+          <li><strong>Segment</strong>: assigned by hand in the catalogue (city car, supermini, compact, saloon, SUV…). A model's rivals are the models in its segment with the most units.</li>
+        </ul>
+
+        <h2 id="limites">7. What these data do not say</h2>
+        <ul>
+          <li><strong>No mileage data.</strong> A model used heavily as a taxi or VTC (private hire car) is de-registered earlier, even if it is robust.</li>
+          <li>
+            <strong>A de-registration is not always a breakdown.</strong> It may be a repair that is not worth doing, a crash, the Plan Renove scrappage scheme or a clean-up of the register. Almost
+            all de-registrations carry the reason ‘voluntary’.
+          </li>
+          <li>
+            <strong>Money matters.</strong> An expensive car is repaired for longer because it is worth it; a cheap car is scrapped sooner after the same fault. That is why we speak of
+            <em>longevity</em>, not reliability.
+          </li>
+          <li><strong>Being registered is not the same as being on the road.</strong> Some cars remain on the register without moving. This makes the curves flatten after 25 years.</li>
+          <li>
+            <strong>Administrative de-registrations.</strong> In 2023 and 2024 there were more than 800,000 de-registrations for ‘other reasons’ of cars with a median age of about 50 years, and in
+            December 2025 and February 2026 two peaks under code ‘A’, which the DGT does not document (codes A and C are shown as they are). Everything points to clean-ups of the register. We count
+            them because they are definitive de-registrations, but they affect mainly ages above 30. Without code A, the median life of all passenger cars would be {{sens-median}} years instead of
+            {{nat-median}}.
+          </li>
+          <li>
+            <strong>Temporary de-registrations.</strong> A car on temporary de-registration is not in the fleet, but if it is later definitively de-registered it counts in the numerator. The effect
+            is small, but it exists.
+          </li>
+          <li>
+            <strong>Young exports.</strong> Most exports are cars under five years old that are resold in other EU countries. To talk about the cars that ‘go to Africa’ we look only at those aged 15
+            or over.
+          </li>
+        </ul>
+
+        <h2 id="actualizacion">8. Updates and validation</h2>
+        <p>
+          Every month an automatic process downloads the new de-registrations and fleet files, recalculates everything and validates it before publishing: it compares the total number of
+          de-registrations, the national median life and that of the main models with the previous version. If something changes abnormally, it does not publish and alerts someone to review it by
+          hand. The code is on <a href="https://github.com/amintikk/cuantodura">GitHub</a>, with reading tests on real lines and formula tests on synthetic data with known results.
+        </p>
+      </div>
+    </main>
+    <!--#footer-->
+    <script type="module" src="/src/pages/page.ts"></script>
+  </body>
+</html>

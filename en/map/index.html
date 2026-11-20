@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Map of the age of the car fleet by province · Cuánto dura</title>
+    <meta name="description" content="Average age of passenger cars by province in Spain, percentage aged over 20, de-registration index and exports, based on DGT data." />
+    <link rel="canonical" href="https://cuantodura.aminox.dev/en/map/" />
+    <link rel="alternate" hreflang="es" href="https://cuantodura.aminox.dev/mapa/" />
+    <link rel="alternate" hreflang="en" href="https://cuantodura.aminox.dev/en/map/" />
+    <link rel="alternate" hreflang="x-default" href="https://cuantodura.aminox.dev/mapa/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Map of the age of the car fleet by province · Cuánto dura" />
+    <meta property="og:description" content="Average age of passenger cars by province in Spain, percentage aged over 20, de-registration index and exports, based on DGT data." />
+    <meta property="og:url" content="https://cuantodura.aminox.dev/en/map/" />
+    <meta property="og:image" content="https://cuantodura.aminox.dev/og/home-en.png" />
+    <meta property="og:locale" content="en_GB" />
+    <!--#head-->
+  </head>
+  <body class="page">
+    <!--#header-->
+    <main id="main">
+      <section class="model-hero"><div class="wrap">
+        <p class="kicker">Map</p>
+        <h1>The age of cars, province by province</h1>
+        <p class="lead" style="margin-top:14px" id="map-lead">Average age of the passenger car fleet registered in each province, according to the DGT register of {{stock-month}}.</p>
+        <div class="seg" role="group" aria-label="What to measure" id="map-metric" style="margin-top:22px">
+          <button type="button" data-k="mean_age" aria-pressed="true">Average age</button>
+          <button type="button" data-k="share_20" aria-pressed="false">Over 20 years</button>
+          <button type="button" data-k="index" aria-pressed="false">De-registration index</button>
+          <button type="button" data-k="old_export" aria-pressed="false">Exports</button>
+        </div>
+      </div></section>
+      <section class="section" style="border-top:0;padding-top:10px"><div class="wrap grid-2">
+        <figure class="figure"><div id="map-main"></div><figcaption id="map-cap"></figcaption></figure>
+        <div><div class="table-scroll" style="max-height:640px"><table id="map-table"></table></div></div>
+      </div></section>
+    </main>
+    <!--#footer-->
+    <script type="module" src="/src/pages/map.ts"></script>
+  </body>
+</html>
