@@ -32,6 +32,10 @@ export function indexPhrase(l: L, s: S): string {
     return l === 'en'
       ? `is de-registered ${diff} % less often than the average car of its age`
       : `se da de baja un ${diff} % menos que la media de coches de su edad`;
+  if (s.index >= 200)
+    return l === 'en'
+      ? `is de-registered ${nf(l, s.index / 100)} times as often as the average car of its age`
+      : `se da de baja ${nf(l, s.index / 100)} veces más que la media de coches de su edad`;
   return l === 'en'
     ? `is de-registered ${diff} % more often than the average car of its age`
     : `se da de baja un ${diff} % más que la media de coches de su edad`;

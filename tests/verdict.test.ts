@@ -15,3 +15,7 @@ test('no figure is invented when data are scarce', () => {
   assert.match(v, /pocas bajas/);
   assert.doesNotMatch(v, /\d+,\d años/);
 });
+
+test('large indices read as a multiple', () => {
+  assert.match(indexPhrase('es', { ...base, index: 362, index_lo: 330, index_hi: 400 }), /3,6 veces más/);
+});
